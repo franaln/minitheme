@@ -1,0 +1,226 @@
+% mini theme
+
+\usepackage[none]{hyphenat}
+\usepackage{etex}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{hyperref} % links
+\usepackage{pstricks,pst-grad}
+\usepackage[percent]{overpic}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,shadows,positioning}
+\usetikzlibrary{calc}
+
+\renewcommand{\arraystretch}{1.5}
+\setbeamersize{text margin left=.2cm}
+\setbeamersize{text margin right=.2cm}
+
+
+% define colours
+\definecolor{MiniRed}{RGB}{230,37,52}
+\definecolor{MiniBlack}{HTML}{353131} %2B2828}
+\definecolor{MiniBlue}{HTML}{16AFCF}
+\definecolor{MiniWhite}{HTML}{FFFFFF} %%9F9F9}
+\definecolor{MiniGrey}{HTML}{565858}
+\definecolor{MiniLightGrey}{HTML}{DEE0E1}
+
+%% fonts
+%\usepackage{sourceserifpro}
+%\usepackage{sourcesanspro}
+%\usepackage{sourcecodepro}
+
+\renewcommand\mathfamilydefault{\rmdefault}
+\renewcommand\familydefault{\rmdefault}
+\setbeamerfont{title}{family*={fouriernc}, size=\fontsize{30}{32}}
+\setbeamerfont{author}{family*={fouriernc}, size=\large}
+\setbeamerfont{block title}{size*={8}{0}, family*={fouriernc}}
+\setbeamerfont{block body}{size*={8}{0}, family*={fouriernc}}
+
+% set colours
+\setbeamercolor{itemize item}{fg=MiniBlue}
+\setbeamercolor{enumerate item}{fg=MiniBlue}
+\setbeamercolor{alerted text}{fg=MiniBlue}
+\setbeamercolor{section in toc}{fg=MiniBlack}
+
+% set fonts
+\setbeamerfont{itemize/enumerate body}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\small}
+
+% make the itemize bullets pixelated >
+\setbeamertemplate{itemize item}{
+    \tikz{
+        \draw[fill=MiniRed,draw=none] (0, 0) rectangle (0.05, 0.05);
+        \draw[fill=MiniRed,draw=none] (0.05, 0.05) rectangle (0.10, 0.10);
+        \draw[fill=MiniRed,draw=none] (0, 0.10) rectangle (0.05, 0.15);
+    }
+}
+
+%% % make the subitems also pixelated >, but a little smaller and red
+\setbeamertemplate{itemize subitem}{
+    \tikz{
+        \draw[fill=MiniGrey,draw=none] (0, 0) rectangle (0.05, 0.05);
+        \draw[fill=MiniGrey,draw=none] (0.05, 0.05) rectangle (0.10, 0.10);
+        \draw[fill=MiniGrey,draw=none] (0, 0.10) rectangle (0.05, 0.15);
+    }
+}
+
+\setbeamercolor{block title}{bg=MiniLightGrey,fg=MiniBlack}
+\setbeamercolor{block body}{bg=MiniLightGrey,fg=MiniBlack}
+
+\setbeamertemplate{block begin}{%
+  \vspace*{1ex}
+  \begin{beamercolorbox}[%
+    ht=2.4ex,
+    dp=1ex,
+    leftskip=1ex,
+    rightskip=2ex]{block title}
+    \usebeamerfont{block title}\insertblocktitle%
+  \end{beamercolorbox}%
+  \vspace*{-2pt}
+  \begin{beamercolorbox}[%
+    dp=1ex,
+    leftskip=1ex,
+    rightskip=1ex,
+    vmode]{block body}%
+    \usebeamerfont{block body}%
+}
+\setbeamertemplate{block end}{%
+  \end{beamercolorbox}
+ \vspace*{0.2ex}
+}
+
+% disable navigation
+\setbeamertemplate{navigation symbols}{}
+
+% custom draw the title page above
+\setbeamertemplate{title page}{}
+
+% again, manually draw the frame title above
+\setbeamertemplate{frametitle}{}
+
+% disable "Figure:" in the captions
+\setbeamertemplate{caption}{\tiny\insertcaption}
+\setbeamertemplate{caption label separator}{}
+
+% use \makeatletter for our progress bar definitions
+\makeatletter
+\newcount\progressbar@tmpcounta % auxiliary counter
+\newcount\progressbar@tmpcountb % auxiliary counter
+\newdimen\progressbar@pbwidth % progressbar width
+\newdimen\progressbar@tmpdim % auxiliary dimension
+
+\newdimen\slidewidth % auxiliary dimension
+\newdimen\slideheight % auxiliary dimension
+
+% make the progress bar go across the screen
+\progressbar@pbwidth=\the\paperwidth
+\slidewidth=\the\paperwidth
+\slideheight=\the\paperheight
+
+\setbeamertemplate{footline}{
+  \progressbar@tmpcounta=\insertframenumber
+  \progressbar@tmpcountb=\inserttotalframenumber
+  \progressbar@tmpdim=\progressbar@pbwidth
+  \multiply\progressbar@tmpdim by \progressbar@tmpcounta
+  \divide\progressbar@tmpdim by \progressbar@tmpcountb
+
+  \begin{tikzpicture}
+
+    \draw[fill=MiniGrey,draw=none] (0cm,0cm) rectangle (\slidewidth,0.05cm);
+    \draw[fill=MiniBlue,draw=none] (0cm,0cm) rectangle (\progressbar@tmpdim,0.05cm);
+
+    %%\node[anchor=south west] at(0cm,0.25cm) {\color{MiniGrey}\tiny\insertsection};
+    \node[anchor=south east] at(\slidewidth,0.10cm) {\color{MiniGrey}\tiny\insertframenumber/\inserttotalframenumber};
+  \end{tikzpicture}
+}
+\makeatother
+
+\setbeamertemplate{headline}{}
+\setbeamertemplate{background}{
+  \begin{tikzpicture}
+    % title bar
+    \fill[color=MiniWhite] (0cm, \slideheight-1cm) rectangle (\slidewidth,\slideheight);
+    \node[anchor=north,text width=\slidewidth,font=\huge,inner xsep=0.5cm,inner ysep=0.25cm] at (0.5\slidewidth,\slideheight) {\color{MiniBlue}\textbf{\insertframetitle}};
+  \end{tikzpicture}
+}
+
+\makeatletter
+\setbeamertemplate{title page}{%
+  \hspace*{-\beamer@leftmargin}%
+  \begin{tikzpicture}
+    % set up the entire slide as the canvas
+    \useasboundingbox (0,0) rectangle (\slidewidth,\slideheight);
+
+    % the background
+    %\fill[color=MiniWhite] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+
+    % draw the actual text
+    \node[anchor=south west,text width=\slidewidth-1cm,inner sep=0, outer sep=0, font=\LARGE\bf, color=MiniBlack] at (0.5cm,5cm) {\baselineskip=1cm\inserttitle\par};
+
+    \fill[MiniBlue] (0,4cm) rectangle (\textwidth, 4.05cm);
+
+    \ifx\author\@empty\else
+    \node[anchor=south west,align=left,color=MiniBlack,font=\normalsize] at (0.5cm,2.5cm) {\insertauthor};
+    \fi
+    \ifx\insertinstitute\@empty\else
+    \node[anchor=south west,align=left,color=MiniBlack] at (0.5cm,1cm) {\insertinstitute};
+    \fi
+    \ifx\insertdate\@empty\else
+    \node[anchor=south west,align=left,color=MiniBlack] at (0.5cm,0.5cm) {\insertdate};
+    \fi
+    \ifx\inserttitlegraphic\@empty\else
+    \node[anchor=south east] at(\slidewidth-1cm,1cm) {\inserttitlegraphic};
+    \fi
+  \end{tikzpicture}%
+}
+\makeatother
+
+
+% add section titles
+\AtBeginSection{\frame{\sectionpage}}
+\setbeamertemplate{section page}
+{
+    \begin{tikzpicture}
+        % set up the entire slide as the canvas
+        \useasboundingbox (0,0) rectangle(\slidewidth,\slideheight);
+        %\fill[color=MiniWhite] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+        \fill[color=MiniWhite] (-1cm, 2cm) rectangle (\slidewidth, \slideheight+0.1cm);
+        \fill[color=MiniRed] (-1cm, 0.5\slideheight-1cm) rectangle(\slidewidth, 0.5\slideheight+1cm);
+        \node[text width=\the\paperwidth-1cm,align=center] at (0.4\slidewidth, 0.5\slideheight) {\color{MiniWhite}\Huge\textbf{\insertsection}};
+    \end{tikzpicture}
+}
+
+% -----------------
+%  Custom commands
+% -----------------
+%\newcommand{\boxd}[2]{\begin{center}\psframebox[linewidth=.1mm,linecolor=mcolor,framesep=0.5em]{\begin{minipage}[t][]{#1\textwidth}#2\end{minipage}} \end{center}}
+\newcommand{\centered}[1]{\begin{center} #1 \end{center}}
+\newcommand{\cheader}[1]{\begin{center} \large \bf \color{sgray} #1 \end{center}}
+\newcommand{\ptitle}[1]{\begin{flushleft}{\large \bf #1}\end{flushleft}}
+\newcommand{\onlytitle}[1]{\begin{center} \fontsize{5cm}{1em}\selectfont \bf \color{sgray} #1 \end{center}}
+\newcommand{\oneitem}[1]{\begin{itemize} \item #1 \end{itemize}}
+\newcommand{\colorarrow}{{\color{MiniBlue}\ensuremath{\to}}}
+%\newcommand{\colorify}[1]{{\color{mcolor} #1}}
+\newcommand{\beginbackup}{\begin{frame}\onlytitle{Backup}\end{frame}}
+%% \newcommand{\fix}[1]{{\color{mred} #1}}
+%% \newcommand{\focus}[1]{{\color{mred} #1}}
+\newcommand{\hr}{\begin{center} \line(1,0){350} \end{center}}
+\newcommand{\img}[2]{\includegraphics[width=#1\textwidth]{#2}}
+\newcommand{\overimg}[4]{\begin{overpic}[width=#1\textwidth]{#2} \put(#3){\tiny #4} \end{overpic}}
+\newcommand{\vsp}{\vspace{0.5cm}}
+\newcommand{\titlesp}{\vspace{1cm}}
+
+% -------------
+%  Tikz shapes
+% -------------
+\newcommand{\redrectangle}[1]{\tikz[baseline] \node[rectangle,thick,fill=red!30,anchor=base]{#1};}
+\newcommand{\bluerectangle}[1]{\tikz[baseline] \node[rectangle,thick,fill=mcolor!30,anchor=base]{#1};}
+\newcommand{\greenrectangle}[1]{\tikz[baseline] \node[rectangle,thick,fill=green!30,anchor=base]{#1};}
+\newcommand{\grayrectangle}[1]{\tikz[baseline] \node[rectangle,thick,fill=black!30,anchor=base]{#1};}
+\newcommand{\tikztag}[1]{\tikz[baseline] \node (#1) {};}
