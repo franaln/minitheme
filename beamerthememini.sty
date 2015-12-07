@@ -37,10 +37,6 @@
 \definecolor{MiniLightGrey}{HTML}{DEE0E1}
 
 %% fonts
-%\usepackage{sourceserifpro}
-%\usepackage{sourcesanspro}
-%\usepackage{sourcecodepro}
-
 \renewcommand\mathfamilydefault{\rmdefault}
 \renewcommand\familydefault{\rmdefault}
 \setbeamerfont{title}{family*={fouriernc}, size=\fontsize{30}{32}}
@@ -169,7 +165,7 @@
     \fill[color=MiniWhite] (0,0) rectangle(\the\paperwidth,\the\paperheight);
 
     % draw the actual text
-    \node[anchor=south west,text width=\slidewidth-1cm,inner sep=0, outer sep=0, font=\fontsize{30}{34}\selectfont\bf, color=MiniBlack] at (0.5cm,5cm) {\baselineskip=1cm\inserttitle\par};
+    \node[anchor=south west,text width=\slidewidth-1cm,inner sep=0, outer sep=0, font=\fontsize{30}{34}\selectfont\bf, color=MiniBlack] at (0.5cm,5cm) {\baselineskip=1.25cm\inserttitle\par};
 
     %% \fill[MiniBlue] (0.5cm,4cm) rectangle (\slidewidth-0.5cm, 4.05cm);
 
@@ -177,7 +173,7 @@
     \node[anchor=south west,align=left,color=MiniBlack,font=\normalsize] at (0.5cm,3cm) {\insertauthor};
     \fi
     \ifx\insertinstitute\@empty\else
-    \node[anchor=south west,align=left,color=MiniBlack] at (0.5cm,1.5cm) {\insertinstitute};
+    \node[anchor=south west,align=left,color=MiniBlack] at (0.5cm,2.5cm) {\insertinstitute};
     \fi
     \ifx\insertshortdate\@empty\else
     \node[anchor=south west,align=left,color=MiniBlack] at (0.5cm,1.0cm) {\insertshortdate};
@@ -195,7 +191,7 @@
 
 % add section titles
 %\if@sectionpage
-\AtBeginSection{\frame{\sectionpage}}
+\AtBeginSection{\begin{frame}[plain]\sectionpage\end{frame}}
 \setbeamertemplate{section page}
 {
    \begin{tikzpicture}
@@ -227,6 +223,7 @@
 \newcommand{\onlytitle}[1]{\begin{center} \fontsize{5cm}{1em}\selectfont \bf \color{sgray} #1 \end{center}}
 \newcommand{\oneitem}[1]{\begin{itemize} \item #1 \end{itemize}}
 \newcommand{\colorarrow}{{\color{MiniBlue}\ensuremath{\to}}}
+\newcommand{\itemarrow}[1]{\begin{itemize} \item[\colorarrow] #1 \end{itemize}}
 \newcommand{\beginbackup}{\begin{frame}\onlytitle{Backup}\end{frame}}
 \newcommand{\hr}{\begin{center} \line(1,0){350} \end{center}}
 \newcommand{\img}[2]{\includegraphics[width=#1\textwidth]{#2}}
@@ -240,7 +237,7 @@
 %  Tikz shapes
 % -------------
 \newcommand{\redrectangle}[1]{\tikz[baseline] \node[rectangle,thick,fill=red!30,anchor=base]{#1};}
-\newcommand{\bluerectangle}[1]{\tikz[baseline] \node[rectangle,thick,fill=mcolor!30,anchor=base]{#1};}
+\newcommand{\bluebg}[1]{\tikz[baseline] \node[rectangle,thick,fill=MiniBlue!40,anchor=base]{#1};}
 \newcommand{\greenrectangle}[1]{\tikz[baseline] \node[rectangle,thick,fill=green!30,anchor=base]{#1};}
 \newcommand{\grayrectangle}[1]{\tikz[baseline] \node[rectangle,thick,fill=black!30,anchor=base]{#1};}
 \newcommand{\tikztag}[1]{\tikz[baseline] \node [coordinate] (#1) {};}
