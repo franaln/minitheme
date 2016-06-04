@@ -24,17 +24,45 @@
 \usetikzlibrary{arrows,shapes,shadows,positioning}
 \usetikzlibrary{calc}
 
+\usepackage[absolute,overlay]{textpos}
+
 \renewcommand{\arraystretch}{1.5}
 \setbeamersize{text margin left=0.2cm}
 \setbeamersize{text margin right=0.2cm}
+%% \setbeamersize{text margin top=0.0cm}
 
 % define colours
-\definecolor{MiniRed}{RGB}{230,37,52}
+%% \definecolor{MiniRed}{RGB}{230,37,52}
+%% \definecolor{MiniLightGrey}{HTML}{DEE0E1}
+%% \definecolor{MiniBlue}{HTML}{0065BD}
+
+%% \definecolor{colororange}{HTML}{E65100} % orange
+%% \definecolor{colordgray}{HTML}{795548} % dark gray for note
+%% \definecolor{colorhgray}{HTML}{212121} % heavy dark gray for normal text
+%% \definecolor{colorgreen}{HTML}{009688} % green
+%% \definecolor{colorlgray}{HTML}{FAFAFA} % background light gray
+%% \definecolor{colorblue}{HTML}{0277BB} % blue
+
 \definecolor{MiniBlack}{HTML}{353131}
-\definecolor{MiniBlue}{HTML}{16AFCF}
 \definecolor{MiniWhite}{HTML}{FFFFFF}
-\definecolor{MiniGrey}{HTML}{565858}
-\definecolor{MiniLightGrey}{HTML}{DEE0E1}
+\definecolor{MiniLightBlue}{RGB}{214,237,252}  % #d6edfc
+\definecolor{MiniBlue}{RGB}{0,110,191}         % #006ebf
+\definecolor{MiniLightGreen}{RGB}{213,247,244} % #0d5f7f4
+\definecolor{MiniGreen}{RGB}{0,134,127}        % #00867f
+\definecolor{MiniLightGrey}{RGB}{245,243,238}       % #f5f3ee
+\definecolor{MiniGrey}{HTML}{636565}
+\definecolor{MiniDarkGrey}{RGB}{51,51,51}      % #333333
+\definecolor{MiniLightRed}{RGB}{254,222,237}   % #c40064
+\definecolor{MiniRed}{RGB}{196,0,100}          % #fedeed
+
+\newcommand{\minilblue}[1]{{\color{MiniLightBlue}{#1}}}
+\newcommand{\miniblue}[1]{{\color{MiniBlue}{#1}}}
+\newcommand{\minilgreen}[1]{{\color{MiniLightGreen}{#1}}}
+\newcommand{\minigreen}[1]{{\color{MiniGreen}{#1}}}
+\newcommand{\minigrey}[1]{{\color{MiniGrey}{#1}}}
+\newcommand{\minidgrey}[1]{{\color{MiniDarkGrey}{#1}}}
+\newcommand{\minilred}[1]{{\color{MiniLightRed}{#1}}}
+\newcommand{\minired}[1]{{\color{MiniRed}{#1}}}
 
 %% fonts
 \renewcommand\mathfamilydefault{\rmdefault}
@@ -58,20 +86,27 @@
 % make the itemize bullets pixelated >
 \setbeamertemplate{itemize item}{
   \tikz{
-    \draw[fill=MiniRed,draw=none] (0, 0) rectangle (0.05, 0.05);
-    \draw[fill=MiniRed,draw=none] (0.05, 0.05) rectangle (0.10, 0.10);
-    \draw[fill=MiniRed,draw=none] (0, 0.10) rectangle (0.05, 0.15);
+    \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
+    \draw[draw=none,fill=MiniBlue] (0, 0.11) circle (0.05);
+    %% \draw[fill=MiniRed,draw=none] (0, 0) rectangle (0.05, 0.05);
+    %% \draw[fill=MiniRed,draw=none] (0.05, 0.05) rectangle (0.10, 0.10);
+    %% \draw[fill=MiniRed,draw=none] (0, 0.10) rectangle (0.05, 0.15);
     }
 }
 
 %% make the subitems also pixelated >, but a little smaller and gray
 \setbeamertemplate{itemize subitem}{
     \tikz{
-        \draw[fill=MiniGrey,draw=none] (0, 0) rectangle (0.05, 0.05);
-        \draw[fill=MiniGrey,draw=none] (0.05, 0.05) rectangle (0.10, 0.10);
-        \draw[fill=MiniGrey,draw=none] (0, 0.10) rectangle (0.05, 0.15);
+      \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
+      \draw[draw=none,fill=MiniGrey] (0, 0.11) circle (0.05);
+        %% \draw[fill=MiniGrey,draw=none] (0, 0) rectangle (0.05, 0.05);
+        %% \draw[fill=MiniGrey,draw=none] (0.05, 0.05) rectangle (0.10, 0.10);
+        %% \draw[fill=MiniGrey,draw=none] (0, 0.10) rectangle (0.05, 0.15);
     }
 }
+
+\setlength\labelsep   {\dimexpr\labelsep - 0.4em\relax}
+\setlength\leftmargini{\dimexpr\leftmargini - 0.4em\relax}
 
 \setbeamercolor{block title}{bg=MiniLightGrey,fg=MiniBlack}
 \setbeamercolor{block body}{bg=MiniLightGrey,fg=MiniBlack}
@@ -135,8 +170,8 @@
 
   \begin{tikzpicture}
 
-    \draw[fill=MiniGrey,draw=none] (0cm,0cm) rectangle (\slidewidth,0.05cm);
-    \draw[fill=MiniBlue,draw=none] (0cm,0cm) rectangle (\progressbar@tmpdim,0.05cm);
+    \draw[fill=MiniWhite,draw=none] (0cm,0cm) rectangle (\slidewidth,0.05cm);
+    \draw[fill=MiniWhite,draw=none] (0cm,0cm) rectangle (\progressbar@tmpdim,0.05cm);
 
     %%\node[anchor=south west,color=MiniGrey,font=\tiny] at (0cm,0.075cm) {\insertsection\par};
     \node[anchor=south east,color=MiniGrey,font=\tiny] at (\slidewidth,0.075cm) {\insertframenumber/\inserttotalframenumber};
@@ -165,7 +200,7 @@
     \fill[color=MiniWhite] (0,0) rectangle(\the\paperwidth,\the\paperheight);
 
     % draw the actual text
-    \node[anchor=south west,text width=\slidewidth-1cm,inner sep=0, outer sep=0, font=\fontsize{30}{34}\selectfont\bf, color=MiniBlack] at (0.5cm,5cm) {\baselineskip=1.25cm\inserttitle\par};
+    \node[anchor=south west,text width=\slidewidth-1cm,inner sep=0, outer sep=0, font=\fontsize{26}{24}\selectfont\bf, color=MiniBlack] at (0.5cm,5cm) {\baselineskip=1.25cm\inserttitle\par};
 
     %% \fill[MiniBlue] (0.5cm,4cm) rectangle (\slidewidth-0.5cm, 4.05cm);
 
@@ -182,7 +217,7 @@
     \node[anchor=south west,align=left,color=MiniBlack] at (0.5cm,0.5cm) {\insertdate};
     \fi
     \ifx\inserttitlegraphic\@empty\else
-    \node[anchor=south east] at(\slidewidth-1cm,1cm) {\inserttitlegraphic};
+    \node[anchor=south east] at(\slidewidth-0.5cm,0.5cm) {\inserttitlegraphic};
     \fi
   \end{tikzpicture}%
 }
@@ -200,18 +235,25 @@
      \node[anchor=west,text width=\slidewidth-1cm,font=\Huge\bf,color=MiniWhite] at (0.5cm, 0.5\slideheight) {\insertsection};
    \end{tikzpicture}
  }
-%% \else
-%% \relax
-%% \fi
+
+% backup slides
+\newcommand{\backupbegin}{
+  \newcounter{framenumberappendix}
+  \setcounter{framenumberappendix}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+  \addtocounter{framenumberappendix}{-\value{framenumber}}
+  \addtocounter{framenumber}{\value{framenumberappendix}}
+}
 
 % new environments
-\renewenvironment{column} %%[1][0.5]
-{\begin{minipage}[t][5cm][c]{0.5\textwidth}
-    \centering
-}
-{
-  \end{minipage}%%
-}
+%% \renewenvironment{column}
+%% {\begin{minipage}[t][5cm][c]{0.5\textwidth}
+%%     \centering
+%% }
+%% {
+%%   \end{minipage}%%
+%% }
 
 % -----------------
 %  Custom commands
@@ -220,9 +262,11 @@
 \newcommand{\centered}[1]{\begin{center} #1 \end{center}}
 \newcommand{\cheader}[1]{\begin{center} \large \bf \color{sgray} #1 \end{center}}
 \newcommand{\ptitle}[1]{\begin{flushleft}{\large \bf #1}\end{flushleft}}
-\newcommand{\onlytitle}[1]{\begin{center} \fontsize{5cm}{1em}\selectfont \bf \color{sgray} #1 \end{center}}
+\newcommand{\onlytitle}[1]{\begin{center} \fontsize{5cm}{1em}\selectfont \bf \color{MiniDarkGrey} #1 \end{center}}
 \newcommand{\oneitem}[1]{\begin{itemize} \item #1 \end{itemize}}
-\newcommand{\colorarrow}{{\color{MiniBlue}\ensuremath{\to}}}
+\newcommand{\colorarrow}{\tikz[baseline] {\draw[MiniBlue,->,line width=0.7] (0,0.1) -- (0.3,0.1);}}
+
+
 \newcommand{\itemarrow}[1]{\begin{itemize} \item[\colorarrow] #1 \end{itemize}}
 \newcommand{\beginbackup}{\begin{frame}\onlytitle{Backup}\end{frame}}
 \newcommand{\hr}{\begin{center} \line(1,0){350} \end{center}}
@@ -231,13 +275,16 @@
 \newcommand{\vsp}{\vspace{0.5cm}}
 \newcommand{\ivsp}{\vspace{-0.5cm}}
 \newcommand{\titlesp}{\vspace{1cm}}
+%% \newcommand{\link}[1]{\href{#1}{\color{MiniBlue}\textsc{link}}}
+
 \newcommand{\link}[1]{\href{#1}{\color{MiniBlue}\textsc{link}}}
+\newcommand{\nlink}[2]{\href{#1}{\color{MiniBlue}\textsc{#2}}}
 
 % -------------
 %  Tikz shapes
 % -------------
-\newcommand{\redrectangle}[1]{\tikz[baseline] \node[rectangle,thick,fill=red!30,anchor=base]{#1};}
-\newcommand{\bluebg}[1]{\tikz[baseline] \node[rectangle,thick,fill=MiniBlue!40,anchor=base]{#1};}
-\newcommand{\greenrectangle}[1]{\tikz[baseline] \node[rectangle,thick,fill=green!30,anchor=base]{#1};}
-\newcommand{\grayrectangle}[1]{\tikz[baseline] \node[rectangle,thick,fill=black!30,anchor=base]{#1};}
+\newcommand{\redbg}[1]{\tikz[baseline] \node[rectangle,thick,fill=red!30,anchor=base]{#1};}
+\newcommand{\bluebg}[1]{\tikz[baseline] \node[rectangle,thick,fill=MiniLightBlue,anchor=base,text width=0.9\textwidth,inner sep=5pt]{#1};}
+\newcommand{\greenbg}[1]{\tikz[baseline] \node[rectangle,thick,fill=green!30,anchor=base]{#1};}
+\newcommand{\graybg}[1]{\tikz[baseline] \node[rectangle,thick,fill=black!30,anchor=base]{#1};}
 \newcommand{\tikztag}[1]{\tikz[baseline] \node [coordinate] (#1) {};}
