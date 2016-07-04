@@ -1,5 +1,5 @@
 PACKAGE_STY = beamerthememini.sty
-PACKAGE_EXTRA = physics.tex susy.tex
+PACKAGE_EXTRA = physics.tex susy.tex atlas_logo.pdf iflp_logo.pdf
 
 TEXMFHOME   = $(shell kpsewhich -var-value=TEXMFHOME)
 INSTALL_DIR = $(TEXMFHOME)/tex/latex/minitheme

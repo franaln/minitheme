@@ -200,7 +200,7 @@
     \fill[color=MiniWhite] (0,0) rectangle(\the\paperwidth,\the\paperheight);
 
     % draw the actual text
-    \node[anchor=south west,text width=\slidewidth-1cm,inner sep=0, outer sep=0, font=\fontsize{26}{24}\selectfont\bf, color=MiniBlack] at (0.5cm,5cm) {\baselineskip=1.25cm\inserttitle\par};
+    \node[anchor=south west,text width=\slidewidth-1cm,inner sep=0, outer sep=0, font=\fontsize{22}{20}\selectfont\bf, color=MiniBlack] at (0.5cm,5cm) {\baselineskip=1.25cm\inserttitle\par};
 
     %% \fill[MiniBlue] (0.5cm,4cm) rectangle (\slidewidth-0.5cm, 4.05cm);
 
@@ -284,7 +284,7 @@
 %  Tikz shapes
 % -------------
 \newcommand{\redbg}[1]{\tikz[baseline] \node[rectangle,thick,fill=red!30,anchor=base]{#1};}
-\newcommand{\bluebg}[1]{\tikz[baseline] \node[rectangle,thick,fill=MiniLightBlue,anchor=base,text width=0.9\textwidth,inner sep=5pt]{#1};}
+\newcommand{\bluebg}[1]{\tikz[baseline] \node[rectangle,thick,fill=MiniBlue!50,anchor=base]{#1};}
 \newcommand{\greenbg}[1]{\tikz[baseline] \node[rectangle,thick,fill=green!30,anchor=base]{#1};}
 \newcommand{\graybg}[1]{\tikz[baseline] \node[rectangle,thick,fill=black!30,anchor=base]{#1};}
 \newcommand{\tikztag}[1]{\tikz[baseline] \node [coordinate] (#1) {};}
