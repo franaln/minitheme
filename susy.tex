@@ -4,6 +4,9 @@
 \newcommand{\SRL}{\ensuremath{\mathrm{SR}_\mathrm{L}}}
 \newcommand{\SRH}{\ensuremath{\mathrm{SR}_\mathrm{H}}}
 
+\newcommand{\SRiL}{\ensuremath{\mathrm{SR}^{\mathrm{incl}}_\mathrm{L}}}
+\newcommand{\SRiH}{\ensuremath{\mathrm{SR}^{\mathrm{incl}}_\mathrm{H}}}
+
 \newcommand{\CRQ}{\ensuremath{\mathrm{CRQ}}}
 \newcommand{\CRQL}{\ensuremath{\mathrm{CRQ}_\mathrm{L}}}
 \newcommand{\CRQH}{\ensuremath{\mathrm{CRQ}_\mathrm{H}}}
@@ -49,15 +52,23 @@
   \addtolength{\dhatheightfix}{-0.85ex}%
   \hat{\vphantom{\rule{1pt}{\dhatheightfix}}%
     \smash{\hat{#1}}}}
-\newcommand{\etaphi}{$(\eta, \phi)$}
-\newcommand{\mtmu}{$(M_3, \mu)$}
-\newcommand{\mgmn}{$(m_{\gluino}, m_{\ninoone})$}
-\newcommand{\ptgam}{\ensuremath{\pt^\gam}}
+
+\definecolor{pull0}{HTML}{CAFF67}
+\definecolor{pull1}{HTML}{FFF34D}
+\definecolor{pull2}{HTML}{FFC300}
+\definecolor{pull3}{HTML}{FF5733}
+\definecolor{pull4}{HTML}{FF2F36}
 
 
 %% Backgrounds
 \newcommand{\feg}{\ensuremath{f_{e\to\gam}}}
 \newcommand{\fjg}{\ensuremath{f_{j\to\gam}}}
+
+\newcommand{\gjet}{\ensuremath{\gamma+\text{jets}}}
+\newcommand{\vgam}{\ensuremath{V\gam}}
+\newcommand{\wgam}{\ensuremath{W\gam}}
+\newcommand{\zgam}{\ensuremath{Z\gam}}
+\newcommand{\ttgam}{\ensuremath{t\bar{t}\gam}}
 
 \newcommand{\wlnug}{W($\to \ell\nu$)+\gam}
 \newcommand{\wenugam}{W($\to e\nu$)+\gam}
@@ -88,11 +99,6 @@
 %% \newcommand{\tgam}{\ensuremath{tq+\gam}}
 \newcommand{\twgam}{\ensuremath{tW+\gam}}
 
-\newcommand{\ttgam}{\ensuremath{t\bar{t}\gam}}
-\newcommand{\vgam}{\ensuremath{V\gam}}
-\newcommand{\wgam}{\ensuremath{W\gam}}
-\newcommand{\zgam}{\ensuremath{Z\gam}}
-\newcommand{\gjet}{\ensuremath{\gamma+\text{jets}}}
 \newcommand{\vqqgam}{\ensuremath{V(\to qq)\gam}}
 \newcommand{\znngam}{\ensuremath{Z(\to \nu\nu)\gam}}
 \newcommand{\zllgam}{\ensuremath{Z(\to ll)\gam}}
@@ -105,14 +111,10 @@
 \newcommand{\lgg}{\ensuremath{\ell \gamma\gamma}}
 \newcommand{\QCDg}{\ensuremath{\mathrm{QCD}}}
 \newcommand{\wlnu}{\ensuremath{W(\to \ell\nu)}}
-\newcommand{\Vg}{W/Z$+\gam$}
-
-
 
 %% PDF
 \newcommand{\cteq}{\textsc{cteq}}
 \newcommand{\mstw}{\textsc{mstw}}
-
 
 %% Variables
 \newcommand{\njets}{\ensuremath{N_\mathrm{jets}}}
@@ -124,8 +126,18 @@
 \newcommand{\rt}{\ensuremath{R_{\mathrm{T}}^{4}}}
 \newcommand{\rtt}{\ensuremath{R_{\mathrm{T}}^{2}}}
 \newcommand{\etiso}{\ensuremath{\et^\mathrm{iso}}}
-\newcommand{\meff}{\ensuremath{M_\mathrm{eff}}}
-
+\newcommand{\meff}{\ensuremath{m_\mathrm{eff}}}
+\newcommand{\mt}{\ensuremath{M_{\mathrm{T}}}}
+\let\MT=\mt
+\let\MEFF=\meff
 
 %% Others
 \newcommand{\ifb}{\ensuremath{\mathrm{fb}^{-1}}}
+
+\newcommand{\mgl}{\ensuremath{m_{\susy{g}}}}
+\newcommand{\mni}{\ensuremath{m_{\ninoone}}}
+
+\newcommand{\etaphi}{$(\eta, \phi)$}
+\newcommand{\mtmu}{$(M_3, \mu)$}
+\newcommand{\mgmn}{$(m_{\gluino}, m_{\ninoone})$}
+\newcommand{\ptgam}{\ensuremath{\pt^\gam}}

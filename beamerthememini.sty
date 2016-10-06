@@ -6,7 +6,6 @@
 \DeclareOption{sectionpage}{\@sectionpagetrue}
 \ProcessOptions
 
-
 % packages
 \usepackage[none]{hyphenat}
 \usepackage{etex}
@@ -55,6 +54,12 @@
 \definecolor{MiniLightRed}{RGB}{254,222,237}   % #c40064
 \definecolor{MiniRed}{RGB}{196,0,100}          % #fedeed
 
+\definecolor{TestRed}{HTML}{BF000E}
+\definecolor{TestRed2}{HTML}{BF006E}
+\definecolor{TestRed3}{HTML}{BF5100}
+\definecolor{TestGreen}{HTML}{00BF51}
+
+\newcommand{\minilblack}[1]{{\color{MiniBlack}{#1}}}
 \newcommand{\minilblue}[1]{{\color{MiniLightBlue}{#1}}}
 \newcommand{\miniblue}[1]{{\color{MiniBlue}{#1}}}
 \newcommand{\minilgreen}[1]{{\color{MiniLightGreen}{#1}}}
@@ -69,28 +74,25 @@
 \renewcommand\familydefault{\rmdefault}
 \setbeamerfont{title}{family*={fouriernc}, size=\fontsize{30}{32}}
 \setbeamerfont{author}{family*={fouriernc}, size=\large}
-\setbeamerfont{block title}{size*={8}{0}, family*={fouriernc}}
+\setbeamerfont*{block title}{size*={10}{0}, family*={fouriernc}, series=\bfseries}
 \setbeamerfont{block body}{size*={8}{0}, family*={fouriernc}}
+\setbeamerfont{itemize/enumerate body}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\small}
 
 % set colours
-%% \setbeamercolor{itemize item}{fg=MiniBlue}
 \setbeamercolor{enumerate item}{fg=MiniBlue}
 \setbeamercolor{alerted text}{fg=MiniBlue}
 \setbeamercolor{section in toc}{fg=MiniBlack}
 
-% set fonts
-\setbeamerfont{itemize/enumerate body}{size=\normalsize}
-\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
-\setbeamerfont{itemize/enumerate subsubbody}{size=\small}
+\setbeamercolor{block title}{bg=MiniLightBlue,fg=MiniBlack}
+\setbeamercolor{block body}{bg=MiniLightBlue,fg=MiniBlack}
 
 % make the itemize bullets pixelated >
 \setbeamertemplate{itemize item}{
   \tikz{
     \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
     \draw[draw=none,fill=MiniBlue] (0, 0.11) circle (0.05);
-    %% \draw[fill=MiniRed,draw=none] (0, 0) rectangle (0.05, 0.05);
-    %% \draw[fill=MiniRed,draw=none] (0.05, 0.05) rectangle (0.10, 0.10);
-    %% \draw[fill=MiniRed,draw=none] (0, 0.10) rectangle (0.05, 0.15);
     }
 }
 
@@ -99,17 +101,12 @@
     \tikz{
       \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
       \draw[draw=none,fill=MiniGrey] (0, 0.11) circle (0.05);
-        %% \draw[fill=MiniGrey,draw=none] (0, 0) rectangle (0.05, 0.05);
-        %% \draw[fill=MiniGrey,draw=none] (0.05, 0.05) rectangle (0.10, 0.10);
-        %% \draw[fill=MiniGrey,draw=none] (0, 0.10) rectangle (0.05, 0.15);
     }
 }
 
 \setlength\labelsep   {\dimexpr\labelsep - 0.4em\relax}
 \setlength\leftmargini{\dimexpr\leftmargini - 0.4em\relax}
 
-\setbeamercolor{block title}{bg=MiniLightGrey,fg=MiniBlack}
-\setbeamercolor{block body}{bg=MiniLightGrey,fg=MiniBlack}
 
 \setbeamertemplate{block begin}{%
   \vspace*{1ex}
@@ -118,7 +115,7 @@
     dp=1ex,
     leftskip=1ex,
     rightskip=2ex]{block title}
-    \usebeamerfont{block title}\insertblocktitle%
+    \usebeamerfont{block title}\insertblocktitle
   \end{beamercolorbox}%
   \vspace*{-2pt}
   \begin{beamercolorbox}[%
@@ -132,6 +129,19 @@
   \end{beamercolorbox}
  \vspace*{0.2ex}
 }
+
+\addtobeamertemplate{block begin}{%
+  \setbeamercolor{itemize item}{fg=MiniBlack}
+  \setbeamertemplate{itemize item}{-}
+}{}
+
+%% \AtBeginEnvironment{block}{
+%%   \setbeamertemplate{itemize item}{-}
+%%   \setbeamertemplate{itemize subitem}{-}
+%%   \setbeamerfont{itemize/enumerate body}{size=size*={10}{0}}
+%%   \setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+%%   \setbeamerfont{itemize/enumerate subsubbody}{size=\small}
+%% }
 
 % disable navigation
 \setbeamertemplate{navigation symbols}{}
@@ -173,8 +183,15 @@
     \draw[fill=MiniWhite,draw=none] (0cm,0cm) rectangle (\slidewidth,0.05cm);
     \draw[fill=MiniWhite,draw=none] (0cm,0cm) rectangle (\progressbar@tmpdim,0.05cm);
 
+    %% \ifthenelse{\insertframenumber > \inserttotalframenumber}{%
+    \node[anchor=south east,color=MiniDarkGrey,font=\tiny,scale=0.8] at (\slidewidth,0.08cm) {\insertframenumber};%
+    %% }%
+    %% {%
+    %%\node[anchor=south east,color=MiniDarkGrey,font=\tiny,scale=0.8] at (\slidewidth,0.08cm) {\insertframenumber/\inserttotalframenumber};%
+    %% }
+
     %%\node[anchor=south west,color=MiniGrey,font=\tiny] at (0cm,0.075cm) {\insertsection\par};
-    \node[anchor=south east,color=MiniGrey,font=\tiny] at (\slidewidth,0.075cm) {\insertframenumber/\inserttotalframenumber};
+    %\node[anchor=south east,color=MiniGrey,font=\tiny] at (\slidewidth,0.075cm) {\insertframenumber/\inserttotalframenumber};
   \end{tikzpicture}
 }
 \makeatother
@@ -184,7 +201,7 @@
   \begin{tikzpicture}
     % title bar
     \fill[color=MiniWhite] (0cm, \slideheight-1cm) rectangle (\slidewidth,\slideheight);
-    \node[anchor=north west,text width=\slidewidth-1cm,font=\huge\bf,inner ysep=0.25cm,color=MiniBlack] at (0,\slideheight) {\insertframetitle};
+    \node[anchor=north west,text width=\slidewidth-1cm,font=\Large\bf,inner ysep=0.25cm,color=MiniBlack] at (0,\slideheight) {\insertframetitle};
   \end{tikzpicture}
 }
 
@@ -247,13 +264,13 @@
 }
 
 % new environments
-%% \renewenvironment{column}
-%% {\begin{minipage}[t][5cm][c]{0.5\textwidth}
-%%     \centering
-%% }
-%% {
-%%   \end{minipage}%%
-%% }
+\renewenvironment{column}
+{\begin{minipage}[t][5cm][c]{0.5\textwidth}
+    \centering
+}
+{
+  \end{minipage}%%
+}
 
 % -----------------
 %  Custom commands
