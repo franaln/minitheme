@@ -10,7 +10,7 @@
 \usepackage[none]{hyphenat}
 \usepackage{etex}
 \usepackage[utf8]{inputenc}
-%%\usepackage[spanish]{babel}
+%%\usepackage[spanish]{babel} %% Uncomment for spanish slides
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{fancyhdr}
 \usepackage{float}
@@ -28,36 +28,19 @@
 \renewcommand{\arraystretch}{1.5}
 \setbeamersize{text margin left=0.2cm}
 \setbeamersize{text margin right=0.2cm}
-%% \setbeamersize{text margin top=0.0cm}
 
 % define colours
-%% \definecolor{MiniRed}{RGB}{230,37,52}
-%% \definecolor{MiniLightGrey}{HTML}{DEE0E1}
-%% \definecolor{MiniBlue}{HTML}{0065BD}
-
-%% \definecolor{colororange}{HTML}{E65100} % orange
-%% \definecolor{colordgray}{HTML}{795548} % dark gray for note
-%% \definecolor{colorhgray}{HTML}{212121} % heavy dark gray for normal text
-%% \definecolor{colorgreen}{HTML}{009688} % green
-%% \definecolor{colorlgray}{HTML}{FAFAFA} % background light gray
-%% \definecolor{colorblue}{HTML}{0277BB} % blue
-
 \definecolor{MiniBlack}{HTML}{353131}
 \definecolor{MiniWhite}{HTML}{FFFFFF}
 \definecolor{MiniLightBlue}{RGB}{214,237,252}  % #d6edfc
 \definecolor{MiniBlue}{RGB}{0,110,191}         % #006ebf
 \definecolor{MiniLightGreen}{RGB}{213,247,244} % #0d5f7f4
 \definecolor{MiniGreen}{RGB}{0,134,127}        % #00867f
-\definecolor{MiniLightGrey}{RGB}{245,243,238}       % #f5f3ee
+\definecolor{MiniLightGrey}{RGB}{245,243,238}  % #f5f3ee
 \definecolor{MiniGrey}{HTML}{636565}
 \definecolor{MiniDarkGrey}{RGB}{51,51,51}      % #333333
 \definecolor{MiniLightRed}{RGB}{254,222,237}   % #c40064
 \definecolor{MiniRed}{RGB}{196,0,100}          % #fedeed
-
-\definecolor{TestRed}{HTML}{BF000E}
-\definecolor{TestRed2}{HTML}{BF006E}
-\definecolor{TestRed3}{HTML}{BF5100}
-\definecolor{TestGreen}{HTML}{00BF51}
 
 \newcommand{\minilblack}[1]{{\color{MiniBlack}{#1}}}
 \newcommand{\minilblue}[1]{{\color{MiniLightBlue}{#1}}}
@@ -80,7 +63,7 @@
 \setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
 \setbeamerfont{itemize/enumerate subsubbody}{size=\small}
 
-% set colours
+%% set colours
 \setbeamercolor{enumerate item}{fg=MiniBlue}
 \setbeamercolor{alerted text}{fg=MiniBlue}
 \setbeamercolor{section in toc}{fg=MiniBlack}
@@ -88,11 +71,11 @@
 \setbeamercolor{block title}{bg=MiniLightBlue,fg=MiniBlack}
 \setbeamercolor{block body}{bg=MiniLightBlue,fg=MiniBlack}
 
-% make the itemize bullets pixelated >
+%$ make the itemize bullets pixelated >
 \setbeamertemplate{itemize item}{
   \tikz{
     \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
-    \draw[draw=none,fill=MiniBlue] (0, 0.11) circle (0.05);
+    \draw[draw=none,fill=MiniBlue] (0, 0.11) circle (0.04);
     }
 }
 
@@ -100,13 +83,12 @@
 \setbeamertemplate{itemize subitem}{
     \tikz{
       \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
-      \draw[draw=none,fill=MiniGrey] (0, 0.11) circle (0.05);
+      \draw[draw=none,fill=MiniGrey] (0, 0.11) circle (0.04);
     }
 }
 
 \setlength\labelsep   {\dimexpr\labelsep - 0.4em\relax}
 \setlength\leftmargini{\dimexpr\leftmargini - 0.4em\relax}
-
 
 \setbeamertemplate{block begin}{%
   \vspace*{1ex}
@@ -184,11 +166,11 @@
     \draw[fill=MiniWhite,draw=none] (0cm,0cm) rectangle (\progressbar@tmpdim,0.05cm);
 
     %% \ifthenelse{\insertframenumber > \inserttotalframenumber}{%
-    \node[anchor=south east,color=MiniDarkGrey,font=\tiny,scale=0.8] at (\slidewidth,0.08cm) {\insertframenumber};%
-    %% }%
-    %% {%
-    %%\node[anchor=south east,color=MiniDarkGrey,font=\tiny,scale=0.8] at (\slidewidth,0.08cm) {\insertframenumber/\inserttotalframenumber};%
-    %% }
+    %%   \node[anchor=south east,color=MiniDarkGrey,font=\tiny,scale=0.8] at (\slidewidth,0.08cm) {\insertframenumber};%
+    %% }{}
+    %% \ifthenelse{\inserttotalframenumber > \insertframenumber}{%
+    \node[anchor=south east,color=MiniDarkGrey,font=\tiny,scale=0.8] at (\slidewidth,0.08cm) {\insertframenumber/\inserttotalframenumber};%
+    %%    }{}
 
     %%\node[anchor=south west,color=MiniGrey,font=\tiny] at (0cm,0.075cm) {\insertsection\par};
     %\node[anchor=south east,color=MiniGrey,font=\tiny] at (\slidewidth,0.075cm) {\insertframenumber/\inserttotalframenumber};
@@ -219,8 +201,6 @@
     % draw the actual text
     \node[anchor=south west,text width=\slidewidth-1cm,inner sep=0, outer sep=0, font=\fontsize{22}{20}\selectfont\bf, color=MiniBlack] at (0.5cm,5cm) {\baselineskip=1.25cm\inserttitle\par};
 
-    %% \fill[MiniBlue] (0.5cm,4cm) rectangle (\slidewidth-0.5cm, 4.05cm);
-
     \ifx\author\@empty\else
     \node[anchor=south west,align=left,color=MiniBlack,font=\normalsize] at (0.5cm,3cm) {\insertauthor};
     \fi
@@ -242,7 +222,6 @@
 
 
 % add section titles
-%\if@sectionpage
 \AtBeginSection{\begin{frame}[plain]\sectionpage\end{frame}}
 \setbeamertemplate{section page}
 {
@@ -253,17 +232,8 @@
    \end{tikzpicture}
  }
 
-% backup slides
-\newcommand{\backupbegin}{
-  \newcounter{framenumberappendix}
-  \setcounter{framenumberappendix}{\value{framenumber}}
-}
-\newcommand{\backupend}{
-  \addtocounter{framenumberappendix}{-\value{framenumber}}
-  \addtocounter{framenumber}{\value{framenumberappendix}}
-}
 
-% new environments
+%% environments
 \renewenvironment{column}
 {\begin{minipage}[t][5cm][c]{0.5\textwidth}
     \centering
@@ -272,30 +242,41 @@
   \end{minipage}%%
 }
 
+%% \newenvironment{items}
+%% {\begin{minipage}[t][5cm][c]{0.5\textwidth}
+%%     \centering
+%% }
+%% {
+%%   \end{minipage}%%
+%% }
+
+
+
 % -----------------
 %  Custom commands
 % -----------------
-%\newcommand{\boxd}[2]{\begin{center}\psframebox[linewidth=.1mm,linecolor=mcolor,framesep=0.5em]{\begin{minipage}[t][]{#1\textwidth}#2\end{minipage}} \end{center}}
+\newcommand{\FIX}[1]{\color{red}\textbf{#1}}
+
+\newcommand{\vsp}{\vspace{0.5cm}}
+\newcommand{\ivsp}{\vspace{-0.5cm}}
+
+\newcommand{\img}[2]{\includegraphics[width=#1\textwidth]{#2}}
+\newcommand{\overimg}[4]{\begin{overpic}[width=#1\textwidth]{#2} \put(#3){\tiny #4} \end{overpic}}
+
+\newcommand{\link}[1]{\href{#1}{\color{MiniBlue}\textsc{link}}}
+\newcommand{\nlink}[2]{\href{#1}{\color{MiniBlue}\textsc{#2}}}
+
+\newcommand{\tblock}[4]{\begin{textblock*}{#1\paperwidth}(#2\textwidth,#3\textheight)#4\end{textblock*}}
+
 \newcommand{\centered}[1]{\begin{center} #1 \end{center}}
 \newcommand{\cheader}[1]{\begin{center} \large \bf \color{sgray} #1 \end{center}}
 \newcommand{\ptitle}[1]{\begin{flushleft}{\large \bf #1}\end{flushleft}}
 \newcommand{\onlytitle}[1]{\begin{center} \fontsize{5cm}{1em}\selectfont \bf \color{MiniDarkGrey} #1 \end{center}}
-\newcommand{\oneitem}[1]{\begin{itemize} \item #1 \end{itemize}}
 \newcommand{\colorarrow}{\tikz[baseline] {\draw[MiniBlue,->,line width=0.7] (0,0.1) -- (0.3,0.1);}}
-
-
-\newcommand{\itemarrow}[1]{\begin{itemize} \item[\colorarrow] #1 \end{itemize}}
-\newcommand{\beginbackup}{\begin{frame}\onlytitle{Backup}\end{frame}}
+\newcommand{\oneitem}[1]{\begin{itemize} \item #1 \end{itemize}}
+\newcommand{\arrowitem}[1]{\begin{itemize} \item[{\color{black} $\rightarrow$}] #1 \end{itemize}}
 \newcommand{\hr}{\begin{center} \line(1,0){350} \end{center}}
-\newcommand{\img}[2]{\includegraphics[width=#1\textwidth]{#2}}
-\newcommand{\overimg}[4]{\begin{overpic}[width=#1\textwidth]{#2} \put(#3){\tiny #4} \end{overpic}}
-\newcommand{\vsp}{\vspace{0.5cm}}
-\newcommand{\ivsp}{\vspace{-0.5cm}}
 \newcommand{\titlesp}{\vspace{1cm}}
-%% \newcommand{\link}[1]{\href{#1}{\color{MiniBlue}\textsc{link}}}
-
-\newcommand{\link}[1]{\href{#1}{\color{MiniBlue}\textsc{link}}}
-\newcommand{\nlink}[2]{\href{#1}{\color{MiniBlue}\textsc{#2}}}
 
 % -------------
 %  Tikz shapes
@@ -305,3 +286,13 @@
 \newcommand{\greenbg}[1]{\tikz[baseline] \node[rectangle,thick,fill=green!30,anchor=base]{#1};}
 \newcommand{\graybg}[1]{\tikz[baseline] \node[rectangle,thick,fill=black!30,anchor=base]{#1};}
 \newcommand{\tikztag}[1]{\tikz[baseline] \node [coordinate] (#1) {};}
+
+% backup slides
+\newcommand{\backupbegin}{
+  \newcounter{finalframe}
+  \setcounter{finalframe}{\value{framenumber}}
+  \begin{frame}\onlytitle{Backup}\end{frame}
+}
+\newcommand{\backupend}{
+  \setcounter{framenumber}{\value{finalframe}}
+}
