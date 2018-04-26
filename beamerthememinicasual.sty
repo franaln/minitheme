@@ -1,4 +1,4 @@
-% mini theme
+% mini casual theme
 
 % options
 \newif\if@sectionpage
@@ -30,33 +30,38 @@
 \setbeamersize{text margin left=0.2cm}
 \setbeamersize{text margin right=0.2cm}
 
-% define colours
+% colours
+\definecolor{mini-black}{HTML}{353131}
+\definecolor{mini-white}{HTML}{FFFFFF}
 
-\definecolor{MiniBlack}{HTML}{353131}
-\definecolor{MiniWhite}{HTML}{FFFFFF}
-\definecolor{MiniLightBlue}{RGB}{214,237,252}  % #d6edfc
-\definecolor{MiniBlue}{RGB}{0,110,191}         % #006ebf
-\definecolor{MiniLightGreen}{RGB}{213,247,244} % #0d5f7f4
-\definecolor{MiniGreen}{RGB}{0,134,127}        % #00867f
-\definecolor{MiniLightGrey}{RGB}{245,243,238}       % #f5f3ee
-\definecolor{MiniGrey}{HTML}{636565}
-\definecolor{MiniDarkGrey}{RGB}{51,51,51}      % #333333
-\definecolor{MiniLightRed}{RGB}{254,222,237}   % #c40064
-\definecolor{MiniRed}{RGB}{196,0,100}          % #fedeed
+%\definecolor{mini-blue}{HTML}{4A5C6D}
+%% \definecolor{mini-green}{HTML}{4A6D5B}
+%% \definecolor{mini-purple}{HTML}{6D4A5C}
+%% \definecolor{mini-brown}{HTML}{6D5B4A}
 
-\newcommand{\minilblack}[1]{{\color{MiniBlack}{#1}}}
-\newcommand{\minilblue}[1]{{\color{MiniLightBlue}{#1}}}
-\newcommand{\miniblue}[1]{{\color{MiniBlue}{#1}}}
-\newcommand{\minilgreen}[1]{{\color{MiniLightGreen}{#1}}}
-\newcommand{\minigreen}[1]{{\color{MiniGreen}{#1}}}
-\newcommand{\minigrey}[1]{{\color{MiniGrey}{#1}}}
-\newcommand{\minidgrey}[1]{{\color{MiniDarkGrey}{#1}}}
-\newcommand{\minilred}[1]{{\color{MiniLightRed}{#1}}}
-\newcommand{\minired}[1]{{\color{MiniRed}{#1}}}
+\definecolor{mini-blue}{HTML}{336699}
+\definecolor{mini-green}{HTML}{339966}
+\definecolor{mini-purple}{HTML}{993366}
+\definecolor{mini-brown}{HTML}{996633}
+
+
+\definecolor{mini-grey}{HTML}{636565}
+\definecolor{mini-darkgrey}{HTML}{333333}
+\definecolor{mini-lightblue}{HTML}{B1BECA}
+
+%% \newcommand{\minilblack}[1]{{\color{mini-black}{#1}}}
+%% \newcommand{\minilblue}[1]{{\color{MiniLightBlue}{#1}}}
+%% \newcommand{\miniblue}[1]{{\color{MiniBlue}{#1}}}
+%% \newcommand{\minilgreen}[1]{{\color{MiniLightGreen}{#1}}}
+%% \newcommand{\minigreen}[1]{{\color{MiniGreen}{#1}}}
+%% \newcommand{\minigrey}[1]{{\color{MiniGrey}{#1}}}
+%% \newcommand{\minidgrey}[1]{{\color{MiniDarkGrey}{#1}}}
+%% \newcommand{\minilred}[1]{{\color{MiniLightRed}{#1}}}
+%% \newcommand{\minired}[1]{{\color{MiniRed}{#1}}}
 
 %% fonts
 \usepackage[default]{raleway}
-\renewcommand\mathfamilydefault{\rmdefault}
+%%\renewcommand\mathfamilydefault{\rmdefault}
 %% \renewcommand\familydefault{\rmdefault}
 %% \setbeamerfont{title}{size=\fontsize{30}{32}}
 %% %% \setbeamerfont{author}{family*={fouriernc}, size=\large}
@@ -67,18 +72,14 @@
 %% \setbeamerfont{itemize/enumerate subsubbody}{size=\small}
 
 % set colours
-\setbeamercolor{enumerate item}{fg=MiniBlue}
-\setbeamercolor{alerted text}{fg=MiniBlue}
-\setbeamercolor{section in toc}{fg=MiniBlack}
-
-\setbeamercolor{block title}{bg=MiniLightBlue,fg=MiniBlack}
-\setbeamercolor{block body}{bg=MiniLightBlue,fg=MiniBlack}
+\setbeamercolor{enumerate item}{fg=mini-blue}
+\setbeamercolor{section in toc}{fg=mini-black}
 
 % make the itemize bullets pixelated >
 \setbeamertemplate{itemize item}{
   \tikz{
     \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
-    \draw[draw=none,fill=MiniBlue] (0, 0.11) circle (0.05);
+    \draw[draw=none,fill=mini-blue] (0, 0.11) circle (0.05);
     }
 }
 
@@ -86,7 +87,7 @@
 \setbeamertemplate{itemize subitem}{
     \tikz{
       \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
-      \draw[draw=none,fill=MiniGrey] (0, 0.11) circle (0.05);
+      \draw[draw=none,fill=mini-grey] (0, 0.11) circle (0.05);
     }
 }
 
@@ -117,7 +118,7 @@
 }
 
 \addtobeamertemplate{block begin}{%
-  \setbeamercolor{itemize item}{fg=MiniBlack}
+  \setbeamercolor{itemize item}{fg=mini-black}
   \setbeamertemplate{itemize item}{-}
 }{}
 
@@ -166,14 +167,14 @@
 
   \begin{tikzpicture}
 
-    \draw[fill=MiniWhite,draw=none] (0cm,0cm) rectangle (\slidewidth,0.05cm);
-    \draw[fill=MiniWhite,draw=none] (0cm,0cm) rectangle (\progressbar@tmpdim,0.05cm);
+    \draw[fill=mini-white,draw=none] (0cm,0cm) rectangle (\slidewidth,0.05cm);
+    \draw[fill=mini-white,draw=none] (0cm,0cm) rectangle (\progressbar@tmpdim,0.05cm);
 
     %% \ifthenelse{\insertframenumber > \inserttotalframenumber}{%
-    \node[anchor=south east,color=MiniDarkGrey,font=\tiny,scale=0.8] at (\slidewidth,0.08cm) {\insertframenumber};%
+    %%\node[anchor=south east,color=mini-darkgrey,font=\tiny,scale=0.8] at (\slidewidth,0.08cm) {\insertframenumber};%
     %% }%
     %% {%
-    %%\node[anchor=south east,color=MiniDarkGrey,font=\tiny,scale=0.8] at (\slidewidth,0.08cm) {\insertframenumber/\inserttotalframenumber};%
+    \node[anchor=south east,color=mini-darkgrey,font=\tiny,scale=1] at (\slidewidth,0.08cm) {\insertframenumber/\inserttotalframenumber};%
     %% }
 
     %%\node[anchor=south west,color=MiniGrey,font=\tiny] at (0cm,0.075cm) {\insertsection\par};
@@ -186,8 +187,8 @@
 \setbeamertemplate{frametitle}{
   \begin{tikzpicture}
     % title bar
-    \fill[color=MiniWhite] (0cm, \slideheight-1cm) rectangle (\slidewidth,\slideheight);
-    \node[anchor=north west,text width=\slidewidth-1cm,font=\Huge\bf,inner ysep=0.25cm,color=MiniBlack] at (0,\slideheight) {\insertframetitle};
+    \fill[color=mini-white] (0cm, \slideheight-1cm) rectangle (\slidewidth,\slideheight);
+    \node[anchor=north west,text width=\slidewidth-1cm,font=\Huge\bf,inner ysep=0.25cm,color=mini-blue] at (0,\slideheight) {\insertframetitle};
   \end{tikzpicture}
 }
 
@@ -200,24 +201,22 @@
     \useasboundingbox (0,0) rectangle (\slidewidth,\slideheight);
 
     % the background
-    \fill[color=MiniWhite] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+    \fill[color=mini-white] (0,0) rectangle(\the\paperwidth,\the\paperheight);
 
     % draw the actual text
-    \node[anchor=south west,text width=\slidewidth-1cm,inner sep=0, outer sep=0, font=\fontsize{22}{20}\selectfont\bf, color=MiniBlack] at (0.5cm,5cm) {\baselineskip=1.25cm\inserttitle\par};
-
-    %% \fill[MiniBlue] (0.5cm,4cm) rectangle (\slidewidth-0.5cm, 4.05cm);
+    \node[anchor=south west,text width=\slidewidth-1cm,inner sep=0, outer sep=0, font=\fontsize{22}{20}\selectfont\bf, color=mini-blue] at (0.5cm,5cm) {\baselineskip=1.25cm\inserttitle\par};
 
     \ifx\author\@empty\else
-    \node[anchor=south west,align=left,color=MiniBlack,font=\normalsize] at (0.5cm,3cm) {\insertauthor};
+    \node[anchor=south west,align=left,color=mini-black,font=\normalsize] at (0.5cm,3cm) {\insertauthor};
     \fi
     \ifx\insertinstitute\@empty\else
-    \node[anchor=south west,align=left,color=MiniBlack] at (0.5cm,2.5cm) {\insertinstitute};
+    \node[anchor=south west,align=left,color=mini-black] at (0.5cm,2.5cm) {\insertinstitute};
     \fi
     \ifx\insertshortdate\@empty\else
-    \node[anchor=south west,align=left,color=MiniBlack] at (0.5cm,1.0cm) {\insertshortdate};
+    \node[anchor=south west,align=left,color=mini-black] at (0.5cm,1.0cm) {\insertshortdate};
     \fi
     \ifx\insertdate\@empty\else
-    \node[anchor=south west,align=left,color=MiniBlack] at (0.5cm,0.5cm) {\insertdate};
+    \node[anchor=south west,align=left,color=mini-black] at (0.5cm,0.5cm) {\insertdate};
     \fi
     \ifx\inserttitlegraphic\@empty\else
     \node[anchor=south east] at(\slidewidth-0.5cm,0.5cm) {\inserttitlegraphic};
@@ -234,8 +233,8 @@
 {
    \begin{tikzpicture}
      \useasboundingbox (0,0) rectangle (\slidewidth,\slideheight);
-     \fill[color=MiniGrey] (-1cm, 0.5\slideheight-1cm) rectangle (\slidewidth, 0.5\slideheight+1cm);
-     \node[anchor=west,text width=\slidewidth-1cm,font=\Huge\bf,color=MiniWhite] at (0.5cm, 0.5\slideheight) {\insertsection};
+     \fill[color=mini-grey] (-1cm, 0.5\slideheight-1cm) rectangle (\slidewidth, 0.5\slideheight+1cm);
+     \node[anchor=west,text width=\slidewidth-1cm,font=\Huge\bf,color=mini-white] at (0.5cm, 0.5\slideheight) {\insertsection};
    \end{tikzpicture}
  }
 
@@ -265,10 +264,10 @@
 \newcommand{\centered}[1]{\begin{center} #1 \end{center}}
 \newcommand{\cheader}[1]{\begin{center} \large \bf \color{sgray} #1 \end{center}}
 \newcommand{\ptitle}[1]{\begin{flushleft}{\large \bf #1}\end{flushleft}}
-\newcommand{\onlytitle}[1]{\begin{center} \fontsize{5cm}{1em}\selectfont \bf \color{MiniDarkGrey} #1 \end{center}}
+\newcommand{\onlytitle}[1]{\begin{center} \fontsize{5cm}{1em}\selectfont \bf \color{mini-darkgrey} #1 \end{center}}
 \newcommand{\oneitem}[1]{\begin{itemize} \item #1 \end{itemize}}
-\newcommand{\onearrowitem}[1]{\begin{itemize} \item[]  \tikz[baseline] {\draw[MiniBlue,line width=0.7] (0,0.25) -- (0,0.05); \draw[MiniBlue,->,line width=0.7] (0,0.05) -- (0.3,0.05);} #1 \end{itemize}}
-\newcommand{\colorarrow}{\tikz[baseline] {\draw[MiniBlue,->,line width=0.7] (0,0.1) -- (0.3,0.1);}}
+\newcommand{\colorarrow}{\tikz[baseline] {\draw[mini-blue,->,line width=0.7] (0,0.1) -- (0.3,0.1);}}
+\newcommand{\onearrowitem}[1]{\begin{itemize} \item[]  \tikz[baseline] {\draw[mini-blue,line width=0.7] (0,0.15) -- (0,0.05); \draw[mini-blue,->,line width=0.7] (0,0.05) -- (0.25,0.05);} #1 \end{itemize}}
 
 
 \newcommand{\itemarrow}[1]{\begin{itemize} \item[\colorarrow] #1 \end{itemize}}
@@ -279,16 +278,16 @@
 \newcommand{\vsp}{\vspace{0.5cm}}
 \newcommand{\ivsp}{\vspace{-0.5cm}}
 \newcommand{\titlesp}{\vspace{1cm}}
-%% \newcommand{\link}[1]{\href{#1}{\color{MiniBlue}\textsc{link}}}
 
-\newcommand{\link}[1]{\href{#1}{\color{MiniBlue}\textsc{link}}}
-\newcommand{\nlink}[2]{\href{#1}{\color{MiniBlue}\textsc{#2}}}
+
+\newcommand{\link}[1]{\href{#1}{\color{mini-blue}\textsc{link}}}
+\newcommand{\nlink}[2]{\href{#1}{\color{mini-blue}\textsc{#2}}}
 
 % -------------
 %  Tikz shapes
 % -------------
 \newcommand{\redbg}[1]{\tikz[baseline] \node[rectangle,thick,fill=red!30,anchor=base]{#1};}
-\newcommand{\bluebg}[1]{\tikz[baseline] \node[rectangle,thick,fill=MiniBlue!50,anchor=base]{#1};}
+\newcommand{\bluebg}[1]{\tikz[baseline] \node[rectangle,thick,fill=mini-blue!50,anchor=base]{#1};}
 \newcommand{\greenbg}[1]{\tikz[baseline] \node[rectangle,thick,fill=green!30,anchor=base]{#1};}
 \newcommand{\graybg}[1]{\tikz[baseline] \node[rectangle,thick,fill=black!30,anchor=base]{#1};}
 \newcommand{\tikztag}[1]{\tikz[baseline] \node [coordinate] (#1) {};}
