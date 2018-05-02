@@ -47,8 +47,10 @@
 \definecolor{mini-grey}{HTML}{636565}
 \definecolor{mini-darkgrey}{HTML}{333333}
 \definecolor{mini-lightblue}{HTML}{B1BECA}
-\definecolor{mini-pink}{HTML}{CC6699}
+%%\definecolor{mini-pink}{HTML}{CC6699}
+\definecolor{mini-pink}{HTML}{FF65B2}
 \definecolor{mini-orange}{HTML}{FF9933}
+
 
 %% \newcommand{\minilblack}[1]{{\color{mini-black}{#1}}}
 %% \newcommand{\minilblue}[1]{{\color{MiniLightBlue}{#1}}}
@@ -76,21 +78,30 @@
 \setbeamercolor{enumerate item}{fg=mini-blue}
 \setbeamercolor{section in toc}{fg=mini-black}
 
-% make the itemize bullets pixelated >
-\setbeamertemplate{itemize item}{
+% tikz bullets
+\newcommand{\icircle}[1]{
   \tikz{
     \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
-    \draw[draw=none,fill=mini-blue] (0, 0.11) circle (0.05);
+    \draw[draw=none,fill=#1] (0, 0.11) circle (0.05);
     }
+}
+\newcommand{\ipixarrow}[1]{
+  \tikz{
+    \draw[fill=#1,draw=none] (0, 0) rectangle (0.05, 0.05);
+    \draw[fill=#1,draw=none] (0.05, 0.05) rectangle (0.10, 0.10);
+    \draw[fill=#1,draw=none] (0, 0.10) rectangle (0.05, 0.15);
+  }
 }
 
-%% make the subitems also pixelated >, but a little smaller and gray
-\setbeamertemplate{itemize subitem}{
-    \tikz{
-      \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
-      \draw[draw=none,fill=mini-grey] (0, 0.11) circle (0.05);
-    }
+\newcommand{\iarrow}[1]{
+  \tikz {
+    \draw[#1,->,line width=0.7] (0,0.05) -- (0.25,0.05);
+  }
 }
+
+
+\setbeamertemplate{itemize item}{\icircle{mini-blue}}
+\setbeamertemplate{itemize subitem}{\icircle{mini-grey}}
 
 \setlength\labelsep   {\dimexpr\labelsep - 0.4em\relax}
 \setlength\leftmargini{\dimexpr\leftmargini - 0.4em\relax}
@@ -267,7 +278,7 @@
 \newcommand{\ptitle}[1]{\begin{flushleft}{\large \bf #1}\end{flushleft}}
 \newcommand{\onlytitle}[1]{\begin{center} \fontsize{5cm}{1em}\selectfont \bf \color{mini-darkgrey} #1 \end{center}}
 \newcommand{\oneitem}[1]{\begin{itemize} \item #1 \end{itemize}}
-\newcommand{\colorarrow}{\tikz[baseline] {\draw[mini-blue,->,line width=0.7] (0,0.1) -- (0.3,0.1);}}
+\newcommand{\colorarrow}[1]{\tikz[baseline] {\draw[#1,->,line width=0.7] (0,0.1) -- (0.3,0.1);}}
 \newcommand{\onearrowitem}[1]{\begin{itemize} \item[]  \tikz[baseline] {\draw[mini-blue,line width=0.7] (0,0.15) -- (0,0.05); \draw[mini-blue,->,line width=0.7] (0,0.05) -- (0.25,0.05);} #1 \end{itemize}}
 
 
