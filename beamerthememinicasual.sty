@@ -39,11 +39,28 @@
 %% \definecolor{mini-purple}{HTML}{6D4A5C}
 %% \definecolor{mini-brown}{HTML}{6D5B4A}
 
-\definecolor{mini-blue}{HTML}{336699}
-\definecolor{mini-green}{HTML}{339966}
-\definecolor{mini-purple}{HTML}{993366}
-\definecolor{mini-brown}{HTML}{996633}
+%% \definecolor{mini-blue}{HTML}{336699}
+%% \definecolor{mini-green}{HTML}{339966}
+%% \definecolor{mini-purple}{HTML}{993366}
+%% \definecolor{mini-brown}{HTML}{996633}
 
+\definecolor{mini-blue}{HTML}{3D52B7}
+\definecolor{mini-green}{HTML}{52B73D}
+\definecolor{mini-red}{HTML}{B73D52}
+\definecolor{mini-yellow}{HTML}{B7A23D}
+
+%% \definecolor{mini-b}{HTML}{1861FF}
+%% \definecolor{mini-g}{HTML}{1861FF}
+%% \definecolor{mini-r}{HTML}{FF1861}
+%% \definecolor{mini-y}{HTML}{1861FF}
+
+\definecolor{mini-b}{HTML}{2E5ED1}
+\definecolor{mini-g}{HTML}{6CC05A}
+\definecolor{mini-r}{HTML}{EF3737}
+\definecolor{mini-y}{HTML}{E2EF70}
+\definecolor{mini-m}{HTML}{F15EFF}
+
+\definecolor{mini-brown}{HTML}{B7653D}
 \definecolor{mini-grey}{HTML}{636565}
 \definecolor{mini-darkgrey}{HTML}{333333}
 \definecolor{mini-lightblue}{HTML}{B1BECA}
@@ -75,7 +92,7 @@
 %% \setbeamerfont{itemize/enumerate subsubbody}{size=\small}
 
 % set colours
-\setbeamercolor{enumerate item}{fg=mini-blue}
+\setbeamercolor{enumerate item}{fg=mini-b}
 \setbeamercolor{section in toc}{fg=mini-black}
 
 % tikz bullets
@@ -87,20 +104,22 @@
 }
 \newcommand{\ipixarrow}[1]{
   \tikz{
-    \draw[fill=#1,draw=none] (0, 0) rectangle (0.05, 0.05);
-    \draw[fill=#1,draw=none] (0.05, 0.05) rectangle (0.10, 0.10);
-    \draw[fill=#1,draw=none] (0, 0.10) rectangle (0.05, 0.15);
+    \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
+    \draw[fill=#1,draw=none] (0, 0.02) rectangle (0.05, 0.07);
+    \draw[fill=#1,draw=none] (0.05, 0.07) rectangle (0.10, 0.12);
+    \draw[fill=#1,draw=none] (0, 0.12) rectangle (0.05, 0.17);
   }
 }
 
 \newcommand{\iarrow}[1]{
   \tikz {
-    \draw[#1,->,line width=0.7] (0,0.05) -- (0.25,0.05);
+    \draw[draw=none] (0, 0.00) rectangle (0, 0.10);
+    \draw[#1,->,line width=0.7] (0.05,0.10) -- (0.28,0.10);
   }
 }
 
 
-\setbeamertemplate{itemize item}{\icircle{mini-blue}}
+\setbeamertemplate{itemize item}{\icircle{mini-b}}
 \setbeamertemplate{itemize subitem}{\icircle{mini-grey}}
 
 \setlength\labelsep   {\dimexpr\labelsep - 0.4em\relax}
@@ -200,7 +219,7 @@
   \begin{tikzpicture}
     % title bar
     \fill[color=mini-white] (0cm, \slideheight-1cm) rectangle (\slidewidth,\slideheight);
-    \node[anchor=north west,text width=\slidewidth-1cm,font=\Huge\bf,inner ysep=0.25cm,color=mini-blue] at (0,\slideheight) {\insertframetitle};
+    \node[anchor=north west,text width=\slidewidth-1cm,font=\Huge\bf,inner ysep=0.25cm,color=mini-b] at (0,\slideheight) {\insertframetitle};
   \end{tikzpicture}
 }
 
@@ -216,7 +235,7 @@
     \fill[color=mini-white] (0,0) rectangle(\the\paperwidth,\the\paperheight);
 
     % draw the actual text
-    \node[anchor=south west,text width=\slidewidth-1cm,inner sep=0, outer sep=0, font=\fontsize{22}{20}\selectfont\bf, color=mini-blue] at (0.5cm,5cm) {\baselineskip=1.25cm\inserttitle\par};
+    \node[anchor=south west,text width=\slidewidth-1cm,inner sep=0, outer sep=0, font=\fontsize{22}{20}\selectfont\bf, color=mini-b] at (0.5cm,5cm) {\baselineskip=1.25cm\inserttitle\par};
 
     \ifx\author\@empty\else
     \node[anchor=south west,align=left,color=mini-black,font=\normalsize] at (0.5cm,3cm) {\insertauthor};
@@ -279,7 +298,7 @@
 \newcommand{\onlytitle}[1]{\begin{center} \fontsize{5cm}{1em}\selectfont \bf \color{mini-darkgrey} #1 \end{center}}
 \newcommand{\oneitem}[1]{\begin{itemize} \item #1 \end{itemize}}
 \newcommand{\colorarrow}[1]{\tikz[baseline] {\draw[#1,->,line width=0.7] (0,0.1) -- (0.3,0.1);}}
-\newcommand{\onearrowitem}[1]{\begin{itemize} \item[]  \tikz[baseline] {\draw[mini-blue,line width=0.7] (0,0.15) -- (0,0.05); \draw[mini-blue,->,line width=0.7] (0,0.05) -- (0.25,0.05);} #1 \end{itemize}}
+\newcommand{\onearrowitem}[1]{\begin{itemize} \item[]  \tikz[baseline] {\draw[mini-b,line width=0.7] (0,0.15) -- (0,0.05); \draw[mini-b,->,line width=0.7] (0,0.05) -- (0.25,0.05);} #1 \end{itemize}}
 
 
 \newcommand{\itemarrow}[1]{\begin{itemize} \item[\colorarrow] #1 \end{itemize}}
@@ -292,14 +311,14 @@
 \newcommand{\titlesp}{\vspace{1cm}}
 
 
-\newcommand{\link}[1]{\href{#1}{\color{mini-blue}\textsc{link}}}
-\newcommand{\nlink}[2]{\href{#1}{\color{mini-blue}\textsc{#2}}}
+\newcommand{\link}[1]{\href{#1}{\color{mini-b}\textsc{link}}}
+\newcommand{\nlink}[2]{\href{#1}{\color{mini-b}\textsc{#2}}}
 
 % -------------
 %  Tikz shapes
 % -------------
 \newcommand{\redbg}[1]{\tikz[baseline] \node[rectangle,thick,fill=red!30,anchor=base]{#1};}
-\newcommand{\bluebg}[1]{\tikz[baseline] \node[rectangle,thick,fill=mini-blue!50,anchor=base]{#1};}
+\newcommand{\bluebg}[1]{\tikz[baseline] \node[rectangle,thick,fill=mini-b!50,anchor=base]{#1};}
 \newcommand{\greenbg}[1]{\tikz[baseline] \node[rectangle,thick,fill=green!30,anchor=base]{#1};}
 \newcommand{\graybg}[1]{\tikz[baseline] \node[rectangle,thick,fill=black!30,anchor=base]{#1};}
 \newcommand{\tikztag}[1]{\tikz[baseline] \node [coordinate] (#1) {};}
