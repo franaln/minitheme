@@ -19,11 +19,12 @@
 \usepackage{hyperref} % links
 \usepackage{pstricks,pst-grad}
 \usepackage[percent]{overpic}
-\usepackage{tikz}
-\usetikzlibrary{arrows,shapes,shadows,positioning}
-\usetikzlibrary{calc}
-
 \usepackage[absolute,overlay]{textpos}
+
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows,shapes,shadows,positioning}
+
+\input{minicommon.tex}
 
 \renewcommand{\arraystretch}{1.5}
 \setbeamersize{text margin left=0.2cm}
@@ -240,59 +241,4 @@
 }
 {
   \end{minipage}%%
-}
-
-%% \newenvironment{items}
-%% {\begin{minipage}[t][5cm][c]{0.5\textwidth}
-%%     \centering
-%% }
-%% {
-%%   \end{minipage}%%
-%% }
-
-
-
-% -----------------
-%  Custom commands
-% -----------------
-\newcommand{\FIX}[1]{\color{red}\textbf{#1}}
-
-\newcommand{\vsp}{\vspace{0.5cm}}
-\newcommand{\ivsp}{\vspace{-0.5cm}}
-
-\newcommand{\img}[2]{\includegraphics[width=#1\textwidth]{#2}}
-\newcommand{\overimg}[4]{\begin{overpic}[width=#1\textwidth]{#2} \put(#3){\tiny #4} \end{overpic}}
-
-\newcommand{\link}[1]{\href{#1}{\color{MiniBlue}\textsc{link}}}
-\newcommand{\nlink}[2]{\href{#1}{\color{MiniBlue}\textsc{#2}}}
-
-\newcommand{\tblock}[4]{\begin{textblock*}{#1\paperwidth}(#2\textwidth,#3\textheight)#4\end{textblock*}}
-
-\newcommand{\centered}[1]{\begin{center} #1 \end{center}}
-\newcommand{\cheader}[1]{\begin{center} \large \bf \color{sgray} #1 \end{center}}
-\newcommand{\ptitle}[1]{\begin{flushleft}{\large \bf #1}\end{flushleft}}
-\newcommand{\onlytitle}[1]{\begin{center} \fontsize{5cm}{1em}\selectfont \bf \color{MiniDarkGrey} #1 \end{center}}
-\newcommand{\colorarrow}{\tikz[baseline] {\draw[MiniBlue,->,line width=0.7] (0,0.1) -- (0.3,0.1);}}
-\newcommand{\oneitem}[1]{\begin{itemize} \item #1 \end{itemize}}
-\newcommand{\arrowitem}[1]{\begin{itemize} \item[{\color{black} $\rightarrow$}] #1 \end{itemize}}
-\newcommand{\hr}{\begin{center} \line(1,0){350} \end{center}}
-\newcommand{\titlesp}{\vspace{1cm}}
-
-% -------------
-%  Tikz shapes
-% -------------
-\newcommand{\redbg}[1]{\tikz[baseline] \node[rectangle,thick,fill=red!30,anchor=base]{#1};}
-\newcommand{\bluebg}[1]{\tikz[baseline] \node[rectangle,thick,fill=MiniBlue!50,anchor=base]{#1};}
-\newcommand{\greenbg}[1]{\tikz[baseline] \node[rectangle,thick,fill=green!30,anchor=base]{#1};}
-\newcommand{\graybg}[1]{\tikz[baseline] \node[rectangle,thick,fill=black!30,anchor=base]{#1};}
-\newcommand{\tikztag}[1]{\tikz[baseline] \node [coordinate] (#1) {};}
-
-% backup slides
-\newcommand{\backupbegin}{
-  \newcounter{finalframe}
-  \setcounter{finalframe}{\value{framenumber}}
-  \begin{frame}\onlytitle{Backup}\end{frame}
-}
-\newcommand{\backupend}{
-  \setcounter{framenumber}{\value{finalframe}}
 }

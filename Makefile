@@ -1,7 +1,7 @@
 PACKAGE_STY_DEFAULT = beamerthememini.sty
 PACKAGE_STY_CASUAL  = beamerthememinicasual.sty
 
-PACKAGE_EXTRA = physics.tex susy.tex atlas_logo.pdf iflp_logo.pdf
+PACKAGE_EXTRA = minicommon.tex physics.tex susy.tex atlas_logo.pdf iflp_logo.pdf
 
 TEXMFHOME   = $(shell kpsewhich -var-value=TEXMFHOME)
 INSTALL_DIR_DEFAULT = $(TEXMFHOME)/tex/latex/minitheme
