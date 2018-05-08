@@ -1,0 +1,42 @@
+% -----------------
+%  Custom commands
+% -----------------
+\newcommand{\img}[2]{\includegraphics[width=#1\textwidth]{#2}}
+\newcommand{\overimg}[4]{\begin{overpic}[width=#1\textwidth]{#2} \put(#3){\tiny #4} \end{overpic}}
+\newcommand{\vsp}{\vspace{0.5cm}}
+\newcommand{\ivsp}{\vspace{-0.5cm}}
+
+\newcommand{\centered}[1]{\begin{center} #1 \end{center}}
+\newcommand{\oneitem}[1]{\begin{itemize} \item #1 \end{itemize}}
+\newcommand{\oneitemcustom}[2]{\begin{itemize} \item[#1] #2 \end{itemize}}
+\newcommand{\colorarrow}[1]{\tikz[baseline] {\draw[#1,->,line width=0.7] (0,0.1) -- (0.3,0.1);}}
+
+\newcommand{\cemph}[1]{{\color{mini-orange}#1}}
+
+%% \newcommand{\beginbackup}{\begin{frame}\onlytitle{Backup}\end{frame}}
+%% \newcommand{\hr}{\begin{center} \line(1,0){350} \end{center}}
+%% \newcommand{\titlesp}{\vspace{1cm}}
+
+%% \newcommand{\link}[1]{\href{#1}{\color{mini-b}\textsc{link}}}
+%% \newcommand{\nlink}[2]{\href{#1}{\color{mini-b}\textsc{#2}}}
+
+% -------------
+%  Tikz shapes
+% -------------
+\newcommand{\crd}[1]{\tikz[overlay, remember picture, baseline=.5ex]\coordinate (#1);}
+
+%% \newcommand{\redbg}[1]{\tikz[baseline] \node[rectangle,thick,fill=red!30,anchor=base]{#1};}
+%% \newcommand{\bluebg}[1]{\tikz[baseline] \node[rectangle,thick,fill=mini-b!50,anchor=base]{#1};}
+%% \newcommand{\greenbg}[1]{\tikz[baseline] \node[rectangle,thick,fill=green!30,anchor=base]{#1};}
+%% \newcommand{\graybg}[1]{\tikz[baseline] \node[rectangle,thick,fill=black!30,anchor=base]{#1};}
+%% \newcommand{\tikztag}[1]{\tikz[baseline] \node [coordinate] (#1) {};}
+
+% backup slides
+\newcommand{\backupbegin}{
+  \newcounter{finalframe}
+  \setcounter{finalframe}{\value{framenumber}}
+  \begin{frame}\onlytitle{Backup}\end{frame}
+}
+\newcommand{\backupend}{
+  \setcounter{framenumber}{\value{finalframe}}
+}
