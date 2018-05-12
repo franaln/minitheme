@@ -1,11 +1,5 @@
 % mini theme
 
-% options
-\newif\if@sectionpage
-\@sectionpagefalse
-\DeclareOption{sectionpage}{\@sectionpagetrue}
-\ProcessOptions
-
 % packages
 \usepackage[none]{hyphenat}
 \usepackage{etex}
@@ -42,16 +36,6 @@
 \definecolor{MiniDarkGrey}{RGB}{51,51,51}      % #333333
 \definecolor{MiniLightRed}{RGB}{254,222,237}   % #c40064
 \definecolor{MiniRed}{RGB}{196,0,100}          % #fedeed
-
-\newcommand{\minilblack}[1]{{\color{MiniBlack}{#1}}}
-\newcommand{\minilblue}[1]{{\color{MiniLightBlue}{#1}}}
-\newcommand{\miniblue}[1]{{\color{MiniBlue}{#1}}}
-\newcommand{\minilgreen}[1]{{\color{MiniLightGreen}{#1}}}
-\newcommand{\minigreen}[1]{{\color{MiniGreen}{#1}}}
-\newcommand{\minigrey}[1]{{\color{MiniGrey}{#1}}}
-\newcommand{\minidgrey}[1]{{\color{MiniDarkGrey}{#1}}}
-\newcommand{\minilred}[1]{{\color{MiniLightRed}{#1}}}
-\newcommand{\minired}[1]{{\color{MiniRed}{#1}}}
 
 %% fonts
 \renewcommand\mathfamilydefault{\rmdefault}
@@ -118,13 +102,6 @@
   \setbeamertemplate{itemize item}{-}
 }{}
 
-%% \AtBeginEnvironment{block}{
-%%   \setbeamertemplate{itemize item}{-}
-%%   \setbeamertemplate{itemize subitem}{-}
-%%   \setbeamerfont{itemize/enumerate body}{size=size*={10}{0}}
-%%   \setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
-%%   \setbeamerfont{itemize/enumerate subsubbody}{size=\small}
-%% }
 
 % disable navigation
 \setbeamertemplate{navigation symbols}{}
@@ -166,15 +143,8 @@
     \draw[fill=MiniWhite,draw=none] (0cm,0cm) rectangle (\slidewidth,0.05cm);
     \draw[fill=MiniWhite,draw=none] (0cm,0cm) rectangle (\progressbar@tmpdim,0.05cm);
 
-    %% \ifthenelse{\insertframenumber > \inserttotalframenumber}{%
-    %%   \node[anchor=south east,color=MiniDarkGrey,font=\tiny,scale=0.8] at (\slidewidth,0.08cm) {\insertframenumber};%
-    %% }{}
-    %% \ifthenelse{\inserttotalframenumber > \insertframenumber}{%
     \node[anchor=south east,color=MiniDarkGrey,font=\tiny,scale=0.8] at (\slidewidth,0.08cm) {\insertframenumber/\inserttotalframenumber};%
-    %%    }{}
 
-    %%\node[anchor=south west,color=MiniGrey,font=\tiny] at (0cm,0.075cm) {\insertsection\par};
-    %\node[anchor=south east,color=MiniGrey,font=\tiny] at (\slidewidth,0.075cm) {\insertframenumber/\inserttotalframenumber};
   \end{tikzpicture}
 }
 \makeatother
@@ -184,7 +154,7 @@
   \begin{tikzpicture}
     % title bar
     \fill[color=MiniWhite] (0cm, \slideheight-1cm) rectangle (\slidewidth,\slideheight);
-    \node[anchor=north west,text width=\slidewidth-1cm,font=\Large\bf,inner ysep=0.25cm,color=MiniBlack] at (0,\slideheight) {\insertframetitle};
+    \node[anchor=north west,text width=\slidewidth-1cm,font=\Large\bf,inner ysep=0.25cm,color=mini-black] at (0,\slideheight) {\insertframetitle};
   \end{tikzpicture}
 }
 
@@ -200,7 +170,7 @@
     \fill[color=MiniWhite] (0,0) rectangle(\the\paperwidth,\the\paperheight);
 
     % draw the actual text
-    \node[anchor=south west,text width=\slidewidth-1cm,inner sep=0, outer sep=0, font=\fontsize{22}{20}\selectfont\bf, color=MiniBlack] at (0.5cm,5cm) {\baselineskip=1.25cm\inserttitle\par};
+    \node[anchor=south west,text width=\slidewidth-1cm,inner sep=0, outer sep=0, font=\fontsize{22}{20}\selectfont\bf, color=mini-black] at (0.5cm,5cm) {\baselineskip=1.25cm\inserttitle\par};
 
     \ifx\author\@empty\else
     \node[anchor=south west,align=left,color=MiniBlack,font=\normalsize] at (0.5cm,3cm) {\insertauthor};
@@ -220,25 +190,3 @@
   \end{tikzpicture}%
 }
 \makeatother
-
-
-% add section titles
-\AtBeginSection{\begin{frame}[plain]\sectionpage\end{frame}}
-\setbeamertemplate{section page}
-{
-   \begin{tikzpicture}
-     \useasboundingbox (0,0) rectangle (\slidewidth,\slideheight);
-     \fill[color=MiniGrey] (-1cm, 0.5\slideheight-1cm) rectangle (\slidewidth, 0.5\slideheight+1cm);
-     \node[anchor=west,text width=\slidewidth-1cm,font=\Huge\bf,color=MiniWhite] at (0.5cm, 0.5\slideheight) {\insertsection};
-   \end{tikzpicture}
- }
-
-
-%% environments
-\renewenvironment{column}
-{\begin{minipage}[t][5cm][c]{0.5\textwidth}
-    \centering
-}
-{
-  \end{minipage}%%
-}

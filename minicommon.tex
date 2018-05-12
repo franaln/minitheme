@@ -1,3 +1,46 @@
+% ---------
+%  Colours
+% ---------
+
+%% basic colours
+\definecolor{mini-black}{HTML}{353131}
+\definecolor{mini-white}{HTML}{FFFFFF}
+
+\definecolor{mini-blue}{HTML}{1F58D1}
+\definecolor{mini-orange}{HTML}{F84242} %%F95B5B}
+\definecolor{mini-grey}{HTML}{636565}
+
+%% extra colours
+\definecolor{mini-darkgrey}{HTML}{333333}
+\definecolor{mini-lightblue}{HTML}{B1BECA}
+\definecolor{mini-pink}{HTML}{FF65B2}
+\definecolor{mini-green}{HTML}{6CC05A}
+
+% -------------
+% Tikz bullets
+% -------------
+\newcommand{\icircle}[1]{
+  \tikz{
+    \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
+    \draw[draw=none,fill=#1] (0, 0.11) circle (0.05);
+    }
+}
+\newcommand{\ipixarrow}[1]{
+  \tikz{
+    \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
+    \draw[fill=#1,draw=none] (0, 0.02) rectangle (0.05, 0.07);
+    \draw[fill=#1,draw=none] (0.05, 0.07) rectangle (0.10, 0.12);
+    \draw[fill=#1,draw=none] (0, 0.12) rectangle (0.05, 0.17);
+  }
+}
+
+\newcommand{\iarrow}[1]{
+  \tikz {
+    \draw[draw=none] (0, 0.00) rectangle (0, 0.10);
+    \draw[#1,->,line width=0.7] (0.05,0.10) -- (0.28,0.10);
+  }
+}
+
 % -----------------
 %  Custom commands
 % -----------------
@@ -33,10 +76,19 @@
 
 % backup slides
 \newcommand{\backupbegin}{
-  \newcounter{finalframe}
-  \setcounter{finalframe}{\value{framenumber}}
-  \begin{frame}\onlytitle{Backup}\end{frame}
+  \newcounter{framenumberappendix}
+  \setcounter{framenumberappendix}{\value{framenumber}}
 }
 \newcommand{\backupend}{
-  \setcounter{framenumber}{\value{finalframe}}
+  \addtocounter{framenumberappendix}{-\value{framenumber}}
+  \addtocounter{framenumber}{\value{framenumberappendix}}
+}
+
+% new environments
+\renewenvironment{column}
+{\begin{minipage}[t][5cm][c]{0.5\textwidth}
+    \centering
+}
+{
+  \end{minipage}%%
 }

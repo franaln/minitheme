@@ -1,11 +1,5 @@
 % mini theme (casual)
 
-% options
-\newif\if@sectionpage
-\@sectionpagefalse
-\DeclareOption{sectionpage}{\@sectionpagetrue}
-\ProcessOptions
-
 % packages
 \usepackage[none]{hyphenat}
 \usepackage{etex}
@@ -30,23 +24,6 @@
 \setbeamersize{text margin left=0.2cm}
 \setbeamersize{text margin right=0.2cm}
 
-% colours
-
-%% basic colours
-\definecolor{mini-black}{HTML}{353131}
-\definecolor{mini-white}{HTML}{FFFFFF}
-
-\definecolor{mini-blue}{HTML}{1F58D1}
-\definecolor{mini-orange}{HTML}{F84242} %%F95B5B}
-\definecolor{mini-grey}{HTML}{636565}
-
-%% extra colours
-\definecolor{mini-darkgrey}{HTML}{333333}
-\definecolor{mini-lightblue}{HTML}{B1BECA}
-\definecolor{mini-pink}{HTML}{FF65B2}
-\definecolor{mini-green}{HTML}{6CC05A}
-
-
 %% fonts
 \usepackage[default]{raleway}
 %%\renewcommand\mathfamilydefault{\rmdefault}
@@ -61,29 +38,6 @@
 \setbeamercolor{enumerate item}{fg=mini-blue}
 \setbeamercolor{section in toc}{fg=mini-black}
 \setbeamercolor{normal text}{fg=mini-black}
-
-% tikz bullets
-\newcommand{\icircle}[1]{
-  \tikz{
-    \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
-    \draw[draw=none,fill=#1] (0, 0.11) circle (0.05);
-    }
-}
-\newcommand{\ipixarrow}[1]{
-  \tikz{
-    \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
-    \draw[fill=#1,draw=none] (0, 0.02) rectangle (0.05, 0.07);
-    \draw[fill=#1,draw=none] (0.05, 0.07) rectangle (0.10, 0.12);
-    \draw[fill=#1,draw=none] (0, 0.12) rectangle (0.05, 0.17);
-  }
-}
-
-\newcommand{\iarrow}[1]{
-  \tikz {
-    \draw[draw=none] (0, 0.00) rectangle (0, 0.10);
-    \draw[#1,->,line width=0.7] (0.05,0.10) -- (0.28,0.10);
-  }
-}
 
 \setbeamertemplate{itemize item}{\icircle{mini-blue}}
 \setbeamertemplate{itemize subitem}{\icircle{mini-grey}}
@@ -144,12 +98,7 @@
 
     \draw[fill=mini-white,draw=none] (0cm,0cm) rectangle (\slidewidth,0.05cm);
 
-    %% \ifnum \thepage > \value{\inserttotalframenumber}\relax%
-    %% \node[anchor=south east,color=mini-darkgrey,font=\tiny,scale=1] at (\slidewidth,0.08cm) {\insertframenumber};%
-    %% \fi
-    %% \ifnum \thepage < \value{\inserttotalframenumber}\relax%
     \node[anchor=south east,color=mini-darkgrey,font=\tiny,scale=1] at (\slidewidth,0.08cm) {\insertframenumber/\inserttotalframenumber};%
-    %% \fi
 
   \end{tikzpicture}
 
@@ -196,35 +145,3 @@
   \end{tikzpicture}%
 }
 \makeatother
-
-
-% add section titles
-%\if@sectionpage
-\AtBeginSection{\begin{frame}[plain]\sectionpage\end{frame}}
-\setbeamertemplate{section page}
-{
-   \begin{tikzpicture}
-     \useasboundingbox (0,0) rectangle (\slidewidth,\slideheight);
-     \fill[color=mini-grey] (-1cm, 0.5\slideheight-1cm) rectangle (\slidewidth, 0.5\slideheight+1cm);
-     \node[anchor=west,text width=\slidewidth-1cm,font=\Huge\bf,color=mini-white] at (0.5cm, 0.5\slideheight) {\insertsection};
-   \end{tikzpicture}
- }
-
-% backup slides
-\newcommand{\backupbegin}{
-  \newcounter{framenumberappendix}
-  \setcounter{framenumberappendix}{\value{framenumber}}
-}
-\newcommand{\backupend}{
-  \addtocounter{framenumberappendix}{-\value{framenumber}}
-  \addtocounter{framenumber}{\value{framenumberappendix}}
-}
-
-% new environments
-\renewenvironment{column}
-{\begin{minipage}[t][5cm][c]{0.5\textwidth}
-    \centering
-}
-{
-  \end{minipage}%%
-}
