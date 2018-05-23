@@ -25,6 +25,14 @@
     \draw[draw=none,fill=#1] (0, 0.11) circle (0.05);
     }
 }
+
+\newcommand{\iemptycircle}[1]{
+  \tikz{
+    \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
+    \draw[draw=#1] (0, 0.11) circle (0.05);
+    }
+}
+
 \newcommand{\ipixarrow}[1]{
   \tikz{
     \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
