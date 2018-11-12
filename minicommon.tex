@@ -6,8 +6,11 @@
 \definecolor{mini-black}{HTML}{353131}
 \definecolor{mini-white}{HTML}{FFFFFF}
 
-\definecolor{mini-blue}{HTML}{1F58D1}
-\definecolor{mini-orange}{HTML}{F84242} %%F95B5B}
+%\definecolor{mini-blue}{HTML}{1F58D1}
+%\definecolor{mini-blue}{HTML}{0B80C3}
+\definecolor{mini-blue}{HTML}{4074E2}
+
+\definecolor{mini-orange}{HTML}{F84242}
 \definecolor{mini-grey}{HTML}{636565}
 
 %% extra colours
@@ -15,6 +18,7 @@
 \definecolor{mini-lightblue}{HTML}{B1BECA}
 \definecolor{mini-pink}{HTML}{FF65B2}
 \definecolor{mini-green}{HTML}{6CC05A}
+
 
 % -------------
 % Tikz bullets
@@ -68,8 +72,10 @@
 %% \newcommand{\hr}{\begin{center} \line(1,0){350} \end{center}}
 %% \newcommand{\titlesp}{\vspace{1cm}}
 
-%% \newcommand{\link}[1]{\href{#1}{\color{mini-b}\textsc{link}}}
-%% \newcommand{\nlink}[2]{\href{#1}{\color{mini-b}\textsc{#2}}}
+\newcommand{\llink}[2]{%
+  \href{#1}{{\color{mini-orange} \underline{#2}}}%
+}
+
 
 % -------------
 %  Tikz shapes
@@ -86,6 +92,12 @@
 \newcommand{\backupbegin}{
   \newcounter{framenumberappendix}
   \setcounter{framenumberappendix}{\value{framenumber}}
+
+  \begin{frame}{}
+
+    {\fontsize{2cm}{1em}\selectfont \textsc{Backup}}
+
+  \end{frame}
 }
 \newcommand{\backupend}{
   \addtocounter{framenumberappendix}{-\value{framenumber}}

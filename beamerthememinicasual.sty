@@ -1,6 +1,17 @@
 % mini theme (casual)
 
+%% \newif\if@doMyOption
+%% \@doMyOptionfalse
+%% \DeclareOption{myoption}{\@doMyOptiontrue}
+%% \ProcessOptions
+
+%% \DeclareOptionBeamer{ftitlesize}{\def\beamer@minicasual@ftitlesize{#1}}
+%% \ExecuteOptionsBeamer{ftitlesize=large} % default value
+%% \ProcessOptionsBeamer
+
 % packages
+%% \RequirePackage[no-math]{fontspec}
+
 \usepackage[none]{hyphenat}
 \usepackage{etex}
 \usepackage[utf8]{inputenc}
@@ -8,7 +19,6 @@
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{fancyhdr}
 \usepackage{float}
-%%\usepackage{graphicx}
 \usepackage{microtype}
 \usepackage{hyperref} % links
 \usepackage{pstricks,pst-grad}
@@ -21,20 +31,126 @@
 \input{minicommon.tex}
 
 \renewcommand{\arraystretch}{1.5}
-\setbeamersize{text margin left=0.2cm}
-\setbeamersize{text margin right=0.2cm}
+\setbeamersize{text margin left=0.25cm}
+\setbeamersize{text margin right=0.25cm}
 
 %% fonts
-\usepackage[default]{raleway}
+\ifboolexpr{bool {xetex} or bool {luatex}}{
+  \@ifpackageloaded{fontspec}{
+    \PassOptionsToPackage{no-math}{fontspec}
+  }{
+    \RequirePackage[no-math]{fontspec}
+  }
+  \newcounter{fontsnotfound}
+  \newcommand{\checkfont}[1]{%
+    \suppressfontnotfounderror=1%
+    \font\x = "#1" at 10pt
+    \selectfont
+    \ifx\x\nullfont%
+      \stepcounter{fontsnotfound}%
+    \fi%
+    \suppressfontnotfounderror=0%
+  }
+
+  \newcommand{\iffontsavailable}[3]{%
+    \setcounter{fontsnotfound}{0}%
+    \expandafter\forcsvlist\expandafter%
+    \checkfont\expandafter{#1}%
+    \ifnum\value{fontsnotfound}=0%
+      #2%
+    \else%
+      #3%
+    \fi%
+  }
+  \iffontsavailable{Fira Sans Light,%
+                    Fira Sans Light Italic,%
+                    Fira Sans,%
+                    Fira Sans Italic}%
+  {%
+    \setsansfont[ItalicFont={Fira Sans Light Italic},%
+                 BoldFont={Fira Sans},%
+                 BoldItalicFont={Fira Sans Italic}]%
+                {Fira Sans Light}%
+  }{%
+    \iffontsavailable{Fira Sans Light OT,%
+                      Fira Sans Light Italic OT,%
+                      Fira Sans OT,%
+                      Fira Sans Italic OT}%
+    {%
+      \setsansfont[ItalicFont={Fira Sans Light Italic OT},%
+                   BoldFont={Fira Sans OT},%
+                   BoldItalicFont={Fira Sans Italic OT}]%
+                  {Fira Sans Light OT}%
+    }{%
+      \PackageWarning{beamerthememetropolis}{%
+        Could not find Fira Sans fonts%
+      }
+    }
+  }
+  \iffontsavailable{Fira Mono, Fira Mono Bold}{%
+    \setmonofont[BoldFont={Fira Mono Medium}]{Fira Mono}%
+  }{%
+    \iffontsavailable{Fira Mono OT, Fira Mono Bold OT}{%
+      \setmonofont[BoldFont={Fira Mono Medium OT}]{Fira Mono OT}%
+    }{%
+      \PackageWarning{beamerthememetropolis}{%
+        Could not find Fira Mono fonts%
+      }
+    }
+  }
+  \AtBeginEnvironment{tabular}{%
+    \addfontfeature{Numbers={Monospaced}}%
+  }
+}{%
+  \PackageWarning{beamerthememetropolis}{%
+    You need to compile with XeLaTeX or LuaLaTeX to use the Fira fonts%
+  }
+  \usepackage{raleway}
+}
+
+%% \usefonttheme{profe%% ssionalfonts}
+%% \usefonttheme{serif}
+%% \usepackage{fontspec}
+%% \setmainfont{Roboto}
+
+%% \setsansfont[ItalicFont={Fira Sans Light Italic}, BoldFont={Fira Sans}, BoldItalicFont={Fira Sans Italic}]{Fira Sans Light}
+%% \setmonofont[BoldFont={Fira Mono Medium}]{Fira Mono}
+
+%% \AtBeginEnvironment{tabular}{%
+%%   \addfontfeature{Numbers={Monospaced}}%
+%% }
+
 %%\renewcommand\mathfamilydefault{\rmdefault}
-%% \renewcommand\familydefault{\rmdefault}
-%% \setbeamerfont{title}{size=\fontsize{30}{32}}
-%% %% \setbeamerfont{author}{family*={fouriernc}, size=\large}
+
+\setbeamerfont{title}{size=\fontsize{26}{22}, series=\bfseries}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{date}{size=\normalsize}
+\setbeamerfont{subtitle}{size=\large}
+
+\setbeamerfont{frametitle}{size=\LARGE, series=\bfseries}
+\setbeamerfont{page number in head/foot}{size=\tiny}
+
+
 \setbeamerfont{itemize/enumerate body}{size=\normalsize}
 \setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
 \setbeamerfont{itemize/enumerate subsubbody}{size=\small}
 
-% set colours
+\setbeamerfont{section title}{size=\Large,%
+                              series=\bfseries}
+\setbeamerfont{block title}{size=\normalsize,%
+                            series=\bfseries}
+\setbeamerfont{block title alerted}{size=\normalsize,%
+                                    series=\bfseries}
+
+
+
+% colours
+\setbeamercolor{title}{fg=mini-blue}
+\setbeamercolor{author}{fg=mini-black}
+
+\setbeamercolor{frametitle}{fg=mini-blue, bg=mini-white}
+\setbeamercolor{footline}{fg=mini-black, bg=mini-white}
+
 \setbeamercolor{enumerate item}{fg=mini-blue}
 \setbeamercolor{section in toc}{fg=mini-black}
 \setbeamercolor{normal text}{fg=mini-black}
@@ -93,43 +209,40 @@
 \slidewidth=\the\paperwidth
 \slideheight=\the\paperheight
 
-\setbeamertemplate{footline}{
-
-  \begin{tikzpicture}
-
-    \draw[fill=mini-white,draw=none] (0cm,0cm) rectangle (\slidewidth,0.05cm);
-
-    \node[anchor=south east,color=mini-darkgrey,font=\tiny,scale=1] at (\slidewidth,0.08cm) {\insertframenumber/\inserttotalframenumber};%
-
-  \end{tikzpicture}
-
-}
-
 \setbeamertemplate{headline}{}
+
+\setbeamertemplate{footline}{
+  \hfill%
+  \begin{beamercolorbox}[wd=1cm, sep=1.2ex, right, ignorebg]{footline}%
+    \usebeamerfont{page number in head/foot}%
+    \insertframenumber/\inserttotalframenumber
+  \end{beamercolorbox}%
+}
+
 \setbeamertemplate{frametitle}{
-  \begin{tikzpicture}
-    % title bar
-    \fill[color=mini-white] (0cm, \slideheight-1cm) rectangle (\slidewidth,\slideheight);
-    \node[anchor=north west,text width=\slidewidth-1cm,font=\Huge\bf,inner ysep=0.25cm,color=mini-blue] at (0,\slideheight) {\insertframetitle};
-  \end{tikzpicture}
+  \nointerlineskip%
+  \begin{beamercolorbox}[wd=\paperwidth, sep=4pt, leftskip=0.2cm, rightskip=0.2cm]{frametitle}%
+  \insertframetitle%
+  \end{beamercolorbox}%
+  \vspace*{-0.1cm}%
 }
 
 
-\makeatletter
+%% \makeatletter
 \setbeamertemplate{title page}{%
   \hspace*{-\beamer@leftmargin}%
   \begin{tikzpicture}
-    % set up the entire slide as the canvas
     \useasboundingbox (0,0) rectangle (\slidewidth,\slideheight);
-
-    % the background
     \fill[color=mini-white] (0,0) rectangle(\the\paperwidth,\the\paperheight);
 
-    % draw the actual text
-    \node[anchor=south west,text width=\slidewidth-1cm,inner sep=0, outer sep=0, font=\fontsize{22}{20}\selectfont\bf, color=mini-blue] at (0.5cm,5cm) {\baselineskip=1.25cm\inserttitle\par};
-
+    \ifx\inserttitle\@empty\else%
+    \node[anchor=south west, text width=\slidewidth-1cm, inner sep=0, outer sep=0, font=\usebeamerfont{title}, color=mini-blue] at (0.5cm, 5cm) {\baselineskip=1.25cm\inserttitle\par};%
+    \fi
+    \ifx\insertsubtitle\@empty\else%
+    \node[anchor=south west, text width=\slidewidth-1cm, inner sep=0, outer sep=0, font=\usebeamerfont{subtitle}] at (0.5cm, 4cm) {\baselineskip=1.25cm\insertsubtitle\par};%
+    \fi
     \ifx\author\@empty\else
-    \node[anchor=south west,align=left,color=mini-black,font=\normalsize] at (0.5cm,3cm) {\insertauthor};
+    \node[anchor=south west,align=left,color=mini-black,font=\usebeamerfont{author}] at (0.5cm,3cm) {\insertauthor};
     \fi
     \ifx\insertinstitute\@empty\else
     \node[anchor=south west,align=left,color=mini-black] at (0.5cm,2.5cm) {\insertinstitute};
@@ -141,8 +254,8 @@
     \node[anchor=south west,align=left,color=mini-black] at (0.5cm,0.5cm) {\insertdate};
     \fi
     \ifx\inserttitlegraphic\@empty\else
-    \node[anchor=south east] at(\slidewidth-0.5cm,0.5cm) {\inserttitlegraphic};
+    \node[anchor=south east] at (\slidewidth-0.5cm,0.5cm) {\inserttitlegraphic};
     \fi
   \end{tikzpicture}%
 }
-\makeatother
+%% \makeatother
