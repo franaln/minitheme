@@ -1,6 +1,15 @@
+% ----------
 % mini theme
+% ----------
 
+%% \newif\if@doCasual
+%% \@doCasualfalse
+%% \DeclareOption{casual}{\@doCasualtrue}
+%% \ProcessOptions
+
+% --------
 % packages
+% --------
 \usepackage[none]{hyphenat}
 \usepackage{etex}
 \usepackage[utf8]{inputenc}
@@ -24,40 +33,113 @@
 \setbeamersize{text margin left=0.2cm}
 \setbeamersize{text margin right=0.2cm}
 
-%% fonts
-\renewcommand\mathfamilydefault{\rmdefault}
-\renewcommand\familydefault{\rmdefault}
-\setbeamerfont{title}{family*={fouriernc}, size=\fontsize{30}{32}}
-\setbeamerfont{author}{family*={fouriernc}, size=\large}
-\setbeamerfont*{block title}{size*={10}{0}, family*={fouriernc}, series=\bfseries}
-\setbeamerfont{block body}{size*={8}{0}, family*={fouriernc}}
+% -----
+% fonts
+% -----
+
+%% \renewcommand\mathfamilydefault{\rmdefault}
+%% \renewcommand\familydefault{\rmdefault}
+%% \setbeamerfont{title}{family*={fouriernc}, size=\fontsize{30}{32}}
+%% \setbeamerfont{author}{family*={fouriernc}, size=\large}
+%% \setbeamerfont*{block title}{size*={10}{0}, family*={fouriernc}, series=\bfseries}
+%% \setbeamerfont{block body}{size*={8}{0}, family*={fouriernc}}
+%% \setbeamerfont{itemize/enumerate body}{size=\normalsize}
+%% \setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+%% \setbeamerfont{itemize/enumerate subsubbody}{size=\small}
+
+%%\usepackage{fontspec}
+\usepackage[no-math]{fontspec}
+%%\usepackage{unicode-math}
+\usepackage[T1]{fontenc}
+
+%% \usepackage{eulervm}
+%% \usepackage[scaled]{helvet}
+\setmainfont{TeX Gyre Heros}
+%%\setmathfont{TeX Gyre Heros}
+\setsansfont{TeX Gyre Heros} % ~ Helvetica
+\setmathrm{TeX Gyre Heros}
+\setmonofont{TeX Gyre Cursor}
+%% \setmathfont[range=\mathit/{greek}]{TeX Gyre Heros Italic}
+%% \setmathfont[range=\mathup/{greek,Greek,latin,Latin,num}]{TeX Gyre Heros}
+%% \setmathfont[range=\mathit/{greek,Greek,latin,Latin,num}]{TeX Gyre Heros Italic}
+%% \setmathfont[range=\mathbfup/{greek,Greek,latin,Latin,num}]{TeX Gyre Heros Bold}
+%% \setmathfont[range=\mathbfit/{greek,Greek,latin,Latin,num}]{TeX Gyre Heros Bold Italic}
+
+\setbeamerfont{title}{size=\fontsize{26}{22}, series=\bfseries}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{date}{size=\normalsize}
+\setbeamerfont{subtitle}{size=\normalsize}
+
+\setbeamerfont{frametitle}{size=\LARGE, series=\bfseries}
+\setbeamerfont{page number in head/foot}{size=\tiny}
+
 \setbeamerfont{itemize/enumerate body}{size=\normalsize}
 \setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
 \setbeamerfont{itemize/enumerate subsubbody}{size=\small}
 
-%% set colours
+\setbeamerfont{section title}{size=\Large, series=\bfseries}
+\setbeamerfont{block title}{size=\normalsize, series=\bfseries}
+\setbeamerfont{block title alerted}{size=\normalsize, series=\bfseries}
+
+
+
+% -------
+% colours
+% -------
+
+%% basic colours
+\definecolor{mini-black}{HTML}{353131}
+\definecolor{mini-white}{HTML}{FFFFFF}
+\definecolor{mini-blue}{HTML}{4074E2}
+\definecolor{mini-orange}{HTML}{F84242}
+\definecolor{mini-grey}{HTML}{636565}
+
+%% extra colours
+\definecolor{mini-darkgrey}{HTML}{333333}
+\definecolor{mini-lightblue}{HTML}{B1BECA}
+\definecolor{mini-pink}{HTML}{FF65B2}
+\definecolor{mini-green}{HTML}{6CC05A}
+
+%% \setbeamercolor{enumerate item}{fg=mini-blue}
+%% \setbeamercolor{alerted text}{fg=mini-blue}
+%% \setbeamercolor{section in toc}{fg=mini-black}
+
+%% %% \setbeamercolor{block title}{bg=MiniLightBlue,fg=MiniBlack}
+%% %% \setbeamercolor{block body}{bg=MiniLightBlue,fg=MiniBlack}
+
+%% %$ make the itemize bullets pixelated >
+%% \setbeamertemplate{itemize item}{
+%%   \tikz{
+%%     \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
+%%     \draw[draw=none,fill=mini-blue] (0, 0.11) circle (0.04);
+%%     }
+%% }
+
+%% %% make the subitems also pixelated >, but a little smaller and gray
+%% \setbeamertemplate{itemize subitem}{
+%%     \tikz{
+%%       \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
+%%       \draw[draw=none,fill=mini-grey] (0, 0.11) circle (0.04);
+%%     }
+%% }
+
+\setbeamercolor{title}{fg=mini-blue}
+\setbeamercolor{author}{fg=mini-black}
+
+\setbeamercolor{frametitle}{fg=mini-black, bg=mini-white}
+\setbeamercolor{footline}{fg=mini-black, bg=mini-white}
+
 \setbeamercolor{enumerate item}{fg=mini-blue}
-\setbeamercolor{alerted text}{fg=mini-blue}
 \setbeamercolor{section in toc}{fg=mini-black}
+\setbeamercolor{normal text}{fg=mini-black}
 
-%% \setbeamercolor{block title}{bg=MiniLightBlue,fg=MiniBlack}
-%% \setbeamercolor{block body}{bg=MiniLightBlue,fg=MiniBlack}
+\setbeamertemplate{itemize item}{\icircle{mini-blue}}
+\setbeamertemplate{itemize subitem}{\icircle{mini-grey}}
+\setbeamertemplate{itemize subsubitem}{\iemptycircle{mini-blue}}
 
-%$ make the itemize bullets pixelated >
-\setbeamertemplate{itemize item}{
-  \tikz{
-    \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
-    \draw[draw=none,fill=mini-blue] (0, 0.11) circle (0.04);
-    }
-}
 
-%% make the subitems also pixelated >, but a little smaller and gray
-\setbeamertemplate{itemize subitem}{
-    \tikz{
-      \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
-      \draw[draw=none,fill=mini-grey] (0, 0.11) circle (0.04);
-    }
-}
+%
+% %
 
 \setlength\labelsep   {\dimexpr\labelsep - 0.4em\relax}
 \setlength\leftmargini{\dimexpr\leftmargini - 0.4em\relax}
@@ -90,77 +172,130 @@
 }{}
 
 
-% disable navigation
-\setbeamertemplate{navigation symbols}{}
 
-% custom draw the title page above
-\setbeamertemplate{title page}{}
-
-% again, manually draw the frame title above
-\setbeamertemplate{frametitle}{}
-
-% disable "Figure:" in the captions
-\setbeamertemplate{caption}{\tiny\insertcaption}
+\setbeamertemplate{navigation symbols}{} % disable navigation
+\setbeamertemplate{title page}{} % custom draw the title page above
+\setbeamertemplate{frametitle}{} % again, manually draw the frame title above
+\setbeamertemplate{caption}{\tiny\insertcaption} % disable "Figure:" in the captions
 \setbeamertemplate{caption label separator}{}
 
 % use \makeatletter for our progress bar definitions
-\makeatletter
-\newcount\progressbar@tmpcounta % auxiliary counter
-\newcount\progressbar@tmpcountb % auxiliary counter
-\newdimen\progressbar@pbwidth % progressbar width
-\newdimen\progressbar@tmpdim % auxiliary dimension
+%% \makeatletter
+%% \newcount\progressbar@tmpcounta % auxiliary counter
+%% \newcount\progressbar@tmpcountb % auxiliary counter
+%% \newdimen\progressbar@pbwidth % progressbar width
+%% \newdimen\progressbar@tmpdim % auxiliary dimension
 
-\newdimen\slidewidth % auxiliary dimension
-\newdimen\slideheight % auxiliary dimension
+%% \newdimen\slidewidth % auxiliary dimension
+%% \newdimen\slideheight % auxiliary dimension
+
+%% % make the progress bar go across the screen
+%% \progressbar@pbwidth=\the\paperwidth
+%% \slidewidth=\the\paperwidth
+%% \slideheight=\the\paperheight
+
+%% \setbeamertemplate{footline}{
+%%   \progressbar@tmpcounta=\insertframenumber
+%%   \progressbar@tmpcountb=\inserttotalframenumber
+%%   \progressbar@tmpdim=\progressbar@pbwidth
+%%   \multiply\progressbar@tmpdim by \progressbar@tmpcounta
+%%   \divide\progressbar@tmpdim by \progressbar@tmpcountb
+
+%%   \begin{tikzpicture}
+
+%%     \draw[fill=mini-white,draw=none] (0cm,0cm) rectangle (\slidewidth,0.05cm);
+%%     \draw[fill=mini-white,draw=none] (0cm,0cm) rectangle (\progressbar@tmpdim,0.05cm);
+
+%%     \node[anchor=south east,color=mini-grey,font=\tiny,scale=0.8] at (\slidewidth,0.08cm) {\insertframenumber/\inserttotalframenumber};%
+
+%%   \end{tikzpicture}
+%% }
+%% \makeatother
+
+%% \setbeamertemplate{headline}{}
+%% \setbeamertemplate{frametitle}{
+%%   \begin{tikzpicture}
+%%     % title bar
+%%     \fill[color=mini-white] (0cm, \slideheight-0.70cm) rectangle (\slidewidth,\slideheight);
+%%     \node[anchor=north west,text width=\slidewidth-1cm,font=\Huge\bf,inner ysep=0.1cm,color=mini-blue] at (0,\slideheight) {\insertframetitle};
+%%   \end{tikzpicture}
+%% }
+
+
+%% \makeatletter
+%% \setbeamertemplate{title page}{%
+%%   \hspace*{-\beamer@leftmargin}%
+%%   \begin{tikzpicture}
+%%     % set up the entire slide as the canvas
+%%     \useasboundingbox (0,0) rectangle (\slidewidth,\slideheight);
+
+%%     % the background
+%%     \fill[color=mini-white] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+
+%%     % draw the actual text
+%%     \node[anchor=south west,text width=\slidewidth-1cm,inner sep=0, outer sep=0, font=\fontsize{24}{22}\selectfont\bf, color=mini-blue] at (0.5cm,5cm) {\baselineskip=1.25cm\inserttitle\par};
+
+%%     \ifx\author\@empty\else
+%%     \node[anchor=south west,align=left,color=mini-black,font=\normalsize] at (0.5cm,3cm) {\insertauthor};
+%%     \fi
+%%     \ifx\insertinstitute\@empty\else
+%%     \node[anchor=south west,align=left,color=mini-black] at (0.5cm,2.5cm) {\insertinstitute};
+%%     \fi
+%%     \ifx\insertshortdate\@empty\else
+%%     \node[anchor=south west,align=left,color=mini-black] at (0.5cm,1.0cm) {\insertshortdate};
+%%     \fi
+%%     \ifx\insertdate\@empty\else
+%%     \node[anchor=south west,align=left,color=mini-black] at (0.5cm,0.5cm) {\insertdate};
+%%     \fi
+%%     \ifx\inserttitlegraphic\@empty\else
+%%     \node[anchor=south east] at(\slidewidth-0.5cm,0.5cm) {\inserttitlegraphic};
+%%     \fi
+%%   \end{tikzpicture}%
+%% }
+%% \makeatother
+
 
 % make the progress bar go across the screen
-\progressbar@pbwidth=\the\paperwidth
+\newdimen\slidewidth % auxiliary dimension
+\newdimen\slideheight % auxiliary dimension
 \slidewidth=\the\paperwidth
 \slideheight=\the\paperheight
 
-\setbeamertemplate{footline}{
-  \progressbar@tmpcounta=\insertframenumber
-  \progressbar@tmpcountb=\inserttotalframenumber
-  \progressbar@tmpdim=\progressbar@pbwidth
-  \multiply\progressbar@tmpdim by \progressbar@tmpcounta
-  \divide\progressbar@tmpdim by \progressbar@tmpcountb
-
-  \begin{tikzpicture}
-
-    \draw[fill=mini-white,draw=none] (0cm,0cm) rectangle (\slidewidth,0.05cm);
-    \draw[fill=mini-white,draw=none] (0cm,0cm) rectangle (\progressbar@tmpdim,0.05cm);
-
-    \node[anchor=south east,color=mini-grey,font=\tiny,scale=0.8] at (\slidewidth,0.08cm) {\insertframenumber/\inserttotalframenumber};%
-
-  \end{tikzpicture}
-}
-\makeatother
-
 \setbeamertemplate{headline}{}
+
+\setbeamertemplate{footline}{
+  \hfill%
+  \begin{beamercolorbox}[wd=1cm, sep=1.2ex, right, ignorebg]{footline}%
+    \usebeamerfont{page number in head/foot}%
+    \insertframenumber/\inserttotalframenumber
+  \end{beamercolorbox}%
+}
+
 \setbeamertemplate{frametitle}{
-  \begin{tikzpicture}
-    % title bar
-    \fill[color=mini-white] (0cm, \slideheight-0.70cm) rectangle (\slidewidth,\slideheight);
-    \node[anchor=north west,text width=\slidewidth-1cm,font=\Huge\bf,inner ysep=0.1cm,color=mini-blue] at (0,\slideheight) {\insertframetitle};
-  \end{tikzpicture}
+  \nointerlineskip%
+  \begin{beamercolorbox}[wd=\paperwidth, sep=4pt, leftskip=0.2cm, rightskip=0.2cm]{frametitle}%
+  \insertframetitle%
+  \end{beamercolorbox}%
+  \vspace*{-0.1cm}%
 }
 
 
-\makeatletter
+%% \makeatletter
 \setbeamertemplate{title page}{%
   \hspace*{-\beamer@leftmargin}%
   \begin{tikzpicture}
-    % set up the entire slide as the canvas
     \useasboundingbox (0,0) rectangle (\slidewidth,\slideheight);
-
-    % the background
     \fill[color=mini-white] (0,0) rectangle(\the\paperwidth,\the\paperheight);
 
-    % draw the actual text
-    \node[anchor=south west,text width=\slidewidth-1cm,inner sep=0, outer sep=0, font=\fontsize{24}{22}\selectfont\bf, color=mini-blue] at (0.5cm,5cm) {\baselineskip=1.25cm\inserttitle\par};
-
+    \ifx\inserttitle\@empty\else%
+    \node[anchor=south west, text width=\slidewidth-1cm, inner sep=0, outer sep=0, font=\usebeamerfont{title}, color=mini-blue] at (0.5cm, 5cm) {\baselineskip=1.25cm\inserttitle\par};%
+    \fi
+    \ifx\insertsubtitle\@empty\else%
+    %%\node[anchor=south west,color=mini-black,text width=\slidewidth-1cm,inner sep=0,outer sep=0,font=\usebeamerfont{subtitle}] at (0.5cm, 4cm) {\baselineskip=1.25cm\insertsubtitle\par};%
+    \node[anchor=south west,align=left,color=mini-black,font=\usebeamerfont{subtitle}] at (0.5cm,4cm) {\insertsubtitle};
+    \fi
     \ifx\author\@empty\else
-    \node[anchor=south west,align=left,color=mini-black,font=\normalsize] at (0.5cm,3cm) {\insertauthor};
+    \node[anchor=south west,align=left,color=mini-black,font=\usebeamerfont{author}] at (0.5cm,3cm) {\insertauthor};
     \fi
     \ifx\insertinstitute\@empty\else
     \node[anchor=south west,align=left,color=mini-black] at (0.5cm,2.5cm) {\insertinstitute};
@@ -172,8 +307,114 @@
     \node[anchor=south west,align=left,color=mini-black] at (0.5cm,0.5cm) {\insertdate};
     \fi
     \ifx\inserttitlegraphic\@empty\else
-    \node[anchor=south east] at(\slidewidth-0.5cm,0.5cm) {\inserttitlegraphic};
+    \node[anchor=south east] at (\slidewidth-0.5cm,0.5cm) {\inserttitlegraphic};
     \fi
   \end{tikzpicture}%
 }
-\makeatother
+%% \makeatother
+
+%%
+% -------------
+% Tikz bullets
+% -------------
+\newcommand{\icircle}[1]{
+  \tikz{
+    \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
+    \draw[draw=none,fill=#1] (0, 0.11) circle (0.05);
+    }
+}
+
+\newcommand{\iemptycircle}[1]{
+  \tikz{
+    \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
+    \draw[draw=#1] (0, 0.11) circle (0.05);
+    }
+}
+
+\newcommand{\ipixarrow}[1]{
+  \tikz{
+    \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
+    \draw[fill=#1,draw=none] (0, 0.02) rectangle (0.05, 0.07);
+    \draw[fill=#1,draw=none] (0.05, 0.07) rectangle (0.10, 0.12);
+    \draw[fill=#1,draw=none] (0, 0.12) rectangle (0.05, 0.17);
+  }
+}
+
+\newcommand{\iarrow}[1]{
+  \tikz {
+    \draw[draw=none] (0, 0.00) rectangle (0, 0.10);
+    \draw[#1,->,line width=0.7] (0.05,0.10) -- (0.28,0.10);
+  }
+}
+
+% -----------------
+%  Custom commands
+% -----------------
+\newcommand{\img}[2]{\includegraphics[width=#1\textwidth]{#2}}
+\newcommand{\overimg}[4]{\begin{overpic}[width=#1\textwidth]{#2} \put(#3){\tiny #4} \end{overpic}}
+
+\newcommand{\vsp}{\vspace{0.1cm}}
+\newcommand{\vspp}{\vspace{0.2cm}}
+\newcommand{\vsppp}{\vspace{0.3cm}}
+\newcommand{\vspppp}{\vspace{0.4cm}}
+\newcommand{\vsppppp}{\vspace{0.5cm}}
+\newcommand{\vsP}{\vspace{1cm}}
+
+\newcommand{\ivsp}{\vspace{-0.1cm}}
+\newcommand{\ivspp}{\vspace{-0.2cm}}
+\newcommand{\ivsppp}{\vspace{-0.3cm}}
+\newcommand{\ivspppp}{\vspace{-0.4cm}}
+\newcommand{\ivsppppp}{\vspace{-0.5cm}}
+\newcommand{\ivsP}{\vspace{-1cm}}
+
+\newcommand{\centered}[1]{\begin{center} #1 \end{center}}
+\newcommand{\oneitem}[1]{\begin{itemize} \item #1 \end{itemize}}
+\newcommand{\oneitemcustom}[2]{\begin{itemize} \item[#1] #2 \end{itemize}}
+\newcommand{\colorarrow}[1]{\tikz[baseline] {\draw[#1,->,line width=0.7] (0,0.1) -- (0.3,0.1);}}
+
+\newcommand{\cemph}[1]{{\color{mini-orange}#1}}
+
+%% \newcommand{\beginbackup}{\begin{frame}\onlytitle{Backup}\end{frame}}
+%% \newcommand{\hr}{\begin{center} \line(1,0){350} \end{center}}
+%% \newcommand{\titlesp}{\vspace{1cm}}
+
+\newcommand{\llink}[2]{%
+  \href{#1}{{\color{mini-orange} \underline{#2}}}%
+}
+
+
+% -------------
+%  Tikz shapes
+% -------------
+\newcommand{\crd}[1]{\tikz[overlay, remember picture, baseline=.5ex]\coordinate (#1);}
+
+%% \newcommand{\redbg}[1]{\tikz[baseline] \node[rectangle,thick,fill=red!30,anchor=base]{#1};}
+%% \newcommand{\bluebg}[1]{\tikz[baseline] \node[rectangle,thick,fill=mini-b!50,anchor=base]{#1};}
+%% \newcommand{\greenbg}[1]{\tikz[baseline] \node[rectangle,thick,fill=green!30,anchor=base]{#1};}
+%% \newcommand{\graybg}[1]{\tikz[baseline] \node[rectangle,thick,fill=black!30,anchor=base]{#1};}
+%% \newcommand{\tikztag}[1]{\tikz[baseline] \node [coordinate] (#1) {};}
+
+% backup slides
+\newcommand{\backupbegin}{
+  \newcounter{framenumberappendix}
+  \setcounter{framenumberappendix}{\value{framenumber}}
+
+  \begin{frame}{}
+
+    {\fontsize{2cm}{1em}\selectfont \textsc{Backup}}
+
+  \end{frame}
+}
+\newcommand{\backupend}{
+  \addtocounter{framenumberappendix}{-\value{framenumber}}
+  \addtocounter{framenumber}{\value{framenumberappendix}}
+}
+
+% new environments
+\renewenvironment{column}
+{\begin{minipage}[t][5cm][c]{0.5\textwidth}
+    \centering
+}
+{
+  \end{minipage}%%
+}

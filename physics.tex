@@ -115,3 +115,149 @@
 \let\mev=\MeV
 \let\kev=\keV
 \let\ev=\eV
+
+% SUSY common macros
+
+%% Regions
+\newcommand{\SRL}{\ensuremath{\mathrm{SR}_\mathrm{L}}}
+\newcommand{\SRH}{\ensuremath{\mathrm{SR}_\mathrm{H}}}
+
+\newcommand{\SRiL}{\ensuremath{\mathrm{SR}^{\mathrm{incl}}_\mathrm{L}}}
+\newcommand{\SRiH}{\ensuremath{\mathrm{SR}^{\mathrm{incl}}_\mathrm{H}}}
+
+\newcommand{\CRQ}{\ensuremath{\mathrm{CRQ}}}
+\newcommand{\CRQL}{\ensuremath{\mathrm{CRQ}_\mathrm{L}}}
+\newcommand{\CRQH}{\ensuremath{\mathrm{CRQ}_\mathrm{H}}}
+
+\newcommand{\CRT}{\ensuremath{\mathrm{CRT}}}
+\newcommand{\CRTL}{\ensuremath{\mathrm{CRT}_\mathrm{L}}}
+\newcommand{\CRTH}{\ensuremath{\mathrm{CRT}_\mathrm{H}}}
+
+\newcommand{\CRW}{\ensuremath{\mathrm{CRW}}}
+\newcommand{\CRWL}{\ensuremath{\mathrm{CRW}_\mathrm{L}}}
+\newcommand{\CRWH}{\ensuremath{\mathrm{CRW}_\mathrm{H}}}
+
+\newcommand{\bSRL}{\textbf{SR$_{\text{\textbf{L}}}$}}
+\newcommand{\bSRH}{\textbf{SR$_{\text{\textbf{H}}}$}}
+
+\newcommand{\bCRQL}{\textbf{CRQ$_{\text{\textbf{L}}}$}}
+\newcommand{\bCRTL}{\textbf{CRT$_{\text{\textbf{L}}}$}}
+\newcommand{\bCRWL}{\textbf{CRW$_{\text{\textbf{L}}}$}}
+
+\newcommand{\bCRQH}{\textbf{CRQ$_{\text{\textbf{H}}}$}}
+\newcommand{\bCRTH}{\textbf{CRT$_{\text{\textbf{H}}}$}}
+\newcommand{\bCRWH}{\textbf{CRW$_{\text{\textbf{H}}}$}}
+
+%% Stats
+\DeclareMathOperator{\Pois}{Pois}
+\newcommand{\pvalue}{valor-$p$}
+\newcommand{\btheta}{\ensuremath{\bm{\theta}}}
+\newcommand{\cl}{\ensuremath{\mathrm{CL}}}
+\newcommand{\clsb}{\ensuremath{\mathrm{CL}_{s+b}}}
+\newcommand{\clb}{\ensuremath{\mathrm{CL}_b}}
+\newcommand{\cls}{\ensuremath{\mathrm{CL}_s}}
+
+\newlength{\dhatheight}
+\newcommand{\doublehat}[1]{%
+  \settoheight{\dhatheight}{\ensuremath{\hat{#1}}}%
+  \addtolength{\dhatheight}{-0.3ex}%
+  \hat{\vphantom{\rule{1pt}{\dhatheight}}%
+    \smash{\hat{#1}}}}
+
+\newlength{\dhatheightfix}
+\newcommand{\doublehatfix}[1]{%
+  \settoheight{\dhatheightfix}{\ensuremath{\hat{#1}}}%
+  \addtolength{\dhatheightfix}{-0.85ex}%
+  \hat{\vphantom{\rule{1pt}{\dhatheightfix}}%
+    \smash{\hat{#1}}}}
+
+\definecolor{pull0}{HTML}{CAFF67}
+\definecolor{pull1}{HTML}{FFF34D}
+\definecolor{pull2}{HTML}{FFC300}
+\definecolor{pull3}{HTML}{FF5733}
+\definecolor{pull4}{HTML}{FF2F36}
+
+
+%% Backgrounds
+\newcommand{\feg}{\ensuremath{f_{e\to\gam}}}
+\newcommand{\fjg}{\ensuremath{f_{j\to\gam}}}
+
+\newcommand{\gjet}{\ensuremath{\gamma+\text{jets}}}
+\newcommand{\vgam}{\ensuremath{V\gam}}
+\newcommand{\wgam}{\ensuremath{W\gam}}
+\newcommand{\zgam}{\ensuremath{Z\gam}}
+\newcommand{\ttgam}{\ensuremath{t\bar{t}\gam}}
+
+\newcommand{\wlnug}{W($\to \ell\nu$)+\gam}
+\newcommand{\wenugam}{W($\to e\nu$)+\gam}
+\newcommand{\wmunugam}{W($\to \mu\nu$)+\gam}
+\newcommand{\wtaunugam}{W($\to \tau\nu$)+\gam}
+\newcommand{\zeegam}{Z($\to ee$)+\gam}
+\newcommand{\zee}{\ensuremath{Z(\to ee)}}
+\newcommand{\zmumugam}{Z($\to \mu\mu$)+\gam}
+\newcommand{\ztautaugam}{Z($\to \tau\tau$)+\gam}
+\newcommand{\wjets}{W$+$jets}
+\newcommand{\zjets}{Z$+$jets}
+\newcommand{\wlnujet}{W($\to \ell\nu$)+jets}
+\newcommand{\wenujet}{W($\to e\nu$)+jets}
+\newcommand{\wmunujet}{W($\to \mu\nu$)+jets}
+\newcommand{\wtaunujet}{W($\to \tau\nu$)+jets}
+\newcommand{\znunujet}{Z($\to \nu\nu$)+jets}
+\newcommand{\zlljet}{Z($\to \ell\ell$)+jets}
+\newcommand{\zeejet}{Z($\to ee$)+jets}
+\newcommand{\zmumujet}{Z($\to \mu\mu$)+jets}
+\newcommand{\ztautaujet}{Z($\to \tau\tau$)+jets}
+\newcommand{\zmm}{\ensuremath{Z\to\mu\mu}}
+\newcommand{\ztt}{\ensuremath{Z\to\tau\tau}}
+\newcommand{\wenu}{\ensuremath{W\to e\nu}}
+\newcommand{\wmnu}{\ensuremath{W\to\mu\nu}}
+\newcommand{\wtnu}{\ensuremath{W\to\tau\nu}}
+\newcommand{\gjetnj}[1]{\ensuremath{\gamma+{\rm jets~Np#1}}}
+\newcommand{\topgamma}{\ensuremath{t + \gam}}
+%% \newcommand{\tgam}{\ensuremath{tq+\gam}}
+\newcommand{\twgam}{\ensuremath{tW+\gam}}
+
+\newcommand{\vqqgam}{\ensuremath{V(\to qq)\gam}}
+\newcommand{\znngam}{\ensuremath{Z(\to \nu\nu)\gam}}
+\newcommand{\zllgam}{\ensuremath{Z(\to ll)\gam}}
+\newcommand{\tgam}{\ensuremath{t\gamma}}
+\newcommand{\efake}{\ensuremath{e\to\gamma\quad \text{fakes}}}
+\newcommand{\jfake}{\ensuremath{j\to\gamma\quad \text{fakes}}}
+
+\newcommand{\Zgg}{\ensuremath{Z(\to \nu\bar{\nu})+\gamma\gamma}}
+\newcommand{\Wgg}{\ensuremath{W(\to \ell\nu)+\gamma\gamma}}
+\newcommand{\lgg}{\ensuremath{\ell \gamma\gamma}}
+\newcommand{\QCDg}{\ensuremath{\mathrm{QCD}}}
+\newcommand{\wlnu}{\ensuremath{W(\to \ell\nu)}}
+
+%% PDF
+\newcommand{\cteq}{\textsc{cteq}}
+\newcommand{\mstw}{\textsc{mstw}}
+
+%% Variables
+\newcommand{\bjets}{\ensuremath{{b-\mathrm{jets}}}}
+\newcommand{\njets}{\ensuremath{N_\mathrm{jets}}}
+\newcommand{\nleptons}{\ensuremath{N_\mathrm{leptones}}}
+\newcommand{\nbjets}{\ensuremath{N_{b-\mathrm{jets}}}}
+\newcommand{\nphotons}{\ensuremath{N_\mathrm{fotones}}}
+\newcommand{\dphijetmet}{\ensuremath{\Delta \phi (\mathrm{jet},\MET)}}
+\newcommand{\dphigamjet}{\ensuremath{\Delta \phi (\gamma, \mathrm{jet})}}
+\newcommand{\dphigammet}{\ensuremath{\Delta \phi (\gamma, \met)}}
+\newcommand{\rt}{\ensuremath{R_{\mathrm{T}}^{4}}}
+\newcommand{\rtt}{\ensuremath{R_{\mathrm{T}}^{2}}}
+\newcommand{\etiso}{\ensuremath{\et^\mathrm{iso}}}
+\newcommand{\meff}{\ensuremath{m_\mathrm{eff}}}
+\newcommand{\mt}{\ensuremath{M_{\mathrm{T}}}}
+\let\MT=\mt
+\let\MEFF=\meff
+
+%% Others
+\newcommand{\ifb}{\ensuremath{\mathrm{fb}^{-1}}}
+
+\newcommand{\mgl}{\ensuremath{m_{\susy{g}}}}
+\newcommand{\mni}{\ensuremath{m_{\ninoone}}}
+
+\newcommand{\etaphi}{$(\eta, \phi)$}
+\newcommand{\mtmu}{$(M_3, \mu)$}
+\newcommand{\mgmn}{$(m_{\gluino}, m_{\ninoone})$}
+\newcommand{\ptgam}{\ensuremath{\pt^\gam}}
