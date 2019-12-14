@@ -52,25 +52,22 @@
 %%\usepackage{unicode-math}
 \usepackage[T1]{fontenc}
 
-%% \usepackage{eulervm}
-%% \usepackage[scaled]{helvet}
-\setmainfont{TeX Gyre Heros}
-%%\setmathfont{TeX Gyre Heros}
-\setsansfont{TeX Gyre Heros} % ~ Helvetica
-\setmathrm{TeX Gyre Heros}
-\setmonofont{TeX Gyre Cursor}
-%% \setmathfont[range=\mathit/{greek}]{TeX Gyre Heros Italic}
-%% \setmathfont[range=\mathup/{greek,Greek,latin,Latin,num}]{TeX Gyre Heros}
-%% \setmathfont[range=\mathit/{greek,Greek,latin,Latin,num}]{TeX Gyre Heros Italic}
-%% \setmathfont[range=\mathbfup/{greek,Greek,latin,Latin,num}]{TeX Gyre Heros Bold}
-%% \setmathfont[range=\mathbfit/{greek,Greek,latin,Latin,num}]{TeX Gyre Heros Bold Italic}
+%%\usepackage[default,oldstyle,scale=1]{opensans}
+\usepackage[sfdefault]{noto}
+\renewcommand\mathfamilydefault{\rmdefault}
 
-\setbeamerfont{title}{size=\fontsize{26}{22}, series=\bfseries}
-\setbeamerfont{author}{size=\normalsize}
+%% \setmainfont{TeX Gyre Heros}
+%% \setsansfont{TeX Gyre Heros} % ~ Helvetica
+%% \setmathrm{TeX Gyre Heros}
+%% \setmonofont{TeX Gyre Cursor}
+
+\setbeamerfont{title}{size=\fontsize{32}{28}, series=\bfseries}
+\setbeamerfont{author}{size=\fontsize{10}{9}}
+\setbeamerfont{institute}{size=\normalsize}
 \setbeamerfont{date}{size=\normalsize}
 \setbeamerfont{subtitle}{size=\normalsize}
 
-\setbeamerfont{frametitle}{size=\LARGE, series=\bfseries}
+\setbeamerfont{frametitle}{size=\Huge, series=\bfseries}
 \setbeamerfont{page number in head/foot}{size=\tiny}
 
 \setbeamerfont{itemize/enumerate body}{size=\normalsize}
@@ -90,14 +87,17 @@
 %% basic colours
 \definecolor{mini-black}{HTML}{353131}
 \definecolor{mini-white}{HTML}{FFFFFF}
-\definecolor{mini-blue}{HTML}{4074E2}
-\definecolor{mini-orange}{HTML}{F84242}
+%% \definecolor{mini-blue}{HTML}{4074E2}
+%% \definecolor{mini-blue}{HTML}{405AE2}
+\definecolor{mini-blue}{HTML}{1B6AB9}
+\definecolor{mini-orange}{HTML}{E34C3D}
 \definecolor{mini-grey}{HTML}{636565}
 
 %% extra colours
 \definecolor{mini-darkgrey}{HTML}{333333}
 \definecolor{mini-lightblue}{HTML}{B1BECA}
 \definecolor{mini-pink}{HTML}{FF65B2}
+%\definecolor{mini-pink}{HTML}{B91B5D}
 \definecolor{mini-green}{HTML}{6CC05A}
 
 %% \setbeamercolor{enumerate item}{fg=mini-blue}
@@ -126,7 +126,7 @@
 \setbeamercolor{title}{fg=mini-blue}
 \setbeamercolor{author}{fg=mini-black}
 
-\setbeamercolor{frametitle}{fg=mini-black, bg=mini-white}
+\setbeamercolor{frametitle}{fg=mini-blue, bg=mini-white}
 \setbeamercolor{footline}{fg=mini-black, bg=mini-white}
 
 \setbeamercolor{enumerate item}{fg=mini-blue}
@@ -288,17 +288,20 @@
     \fill[color=mini-white] (0,0) rectangle(\the\paperwidth,\the\paperheight);
 
     \ifx\inserttitle\@empty\else%
-    \node[anchor=south west, text width=\slidewidth-1cm, inner sep=0, outer sep=0, font=\usebeamerfont{title}, color=mini-blue] at (0.5cm, 5cm) {\baselineskip=1.25cm\inserttitle\par};%
+    \node[text centered, anchor=south west, text width=\slidewidth, inner sep=0, outer sep=0, font=\usebeamerfont{title}, color=mini-blue] at (0.0cm, 5.5cm) {\baselineskip=1.25cm\inserttitle\par};%
+    %\node[anchor=south west, text width=\slidewidth, inner sep=0, outer sep=0, font=\usebeamerfont{title}, color=mini-blue] at (0.5cm, 5.5cm) {\baselineskip=1.25cm\inserttitle\par};%
     \fi
-    \ifx\insertsubtitle\@empty\else%
-    %%\node[anchor=south west,color=mini-black,text width=\slidewidth-1cm,inner sep=0,outer sep=0,font=\usebeamerfont{subtitle}] at (0.5cm, 4cm) {\baselineskip=1.25cm\insertsubtitle\par};%
-    \node[anchor=south west,align=left,color=mini-black,font=\usebeamerfont{subtitle}] at (0.5cm,4cm) {\insertsubtitle};
-    \fi
+    %% \ifx\insertsubtitle\@empty\else%
+    %% %%\node[anchor=south west,color=mini-black,text width=\slidewidth-1cm,inner sep=0,outer sep=0,font=\usebeamerfont{subtitle}] at (0.5cm, 4cm) {\baselineskip=1.25cm\insertsubtitle\par};%
+    %% \node[text centered, anchor=south west, color=mini-blue, font=\usebeamerfont{subtitle}, text width=\slidewidth] at (0.0cm,4cm) {\insertsubtitle};
+    %% \fi
     \ifx\author\@empty\else
-    \node[anchor=south west,align=left,color=mini-black,font=\usebeamerfont{author}] at (0.5cm,3cm) {\insertauthor};
+    \node[text centered, anchor=south west, color=mini-black, font=\usebeamerfont{author},text width=\slidewidth] at (0.0cm,4.0cm) {\insertauthor};
+    %\node[anchor=south west, color=mini-black, font=\usebeamerfont{author},text width=\slidewidth] at (0.5cm,4.0cm) {\insertauthor};
     \fi
     \ifx\insertinstitute\@empty\else
-    \node[anchor=south west,align=left,color=mini-black] at (0.5cm,2.5cm) {\insertinstitute};
+    \node[text centered, anchor=south west, color=mini-black, font=\usebeamerfont{institute}, text width=\slidewidth] at (0.0cm,3.5cm) {\insertinstitute};
+    %\node[anchor=south west, color=mini-black, font=\usebeamerfont{institute}, text width=\slidewidth] at (0.5cm,3.5cm) {\insertinstitute};
     \fi
     \ifx\insertshortdate\@empty\else
     \node[anchor=south west,align=left,color=mini-black] at (0.5cm,1.0cm) {\insertshortdate};
@@ -318,9 +321,13 @@
 % Tikz bullets
 % -------------
 \newcommand{\icircle}[1]{
+  %% \tikz[baseline={(a.south)}]{
+  %%   %% \draw[draw=none,fill=#1] (0, 0) circle (0.05);
+  %%   \node[draw, circle, #1, fill=#1, inner sep=1pt, minimum size=0.9mm] (a) {};
+  %% }
   \tikz{
-    \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
-    \draw[draw=none,fill=#1] (0, 0.11) circle (0.05);
+    \draw[draw=none] (0, 0.00) rectangle (0, 0.05);
+    \draw[#1,fill=#1] (0,0.11) circle (0.05);
     }
 }
 
@@ -378,8 +385,12 @@
 %% \newcommand{\hr}{\begin{center} \line(1,0){350} \end{center}}
 %% \newcommand{\titlesp}{\vspace{1cm}}
 
+%% \newcommand{\llink}[2]{%
+%%   \href{#1}{{\color{mini-orange} \underline{#2}}}%
+%% }
+
 \newcommand{\llink}[2]{%
-  \href{#1}{{\color{mini-orange} \underline{#2}}}%
+  \href{#1}{{\color{mini-orange}\underline{#2}}}%
 }
 
 
@@ -418,3 +429,9 @@
 {
   \end{minipage}%%
 }
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\ig}{\includegraphics}
+
+\newcommand{\asterisk}{∗}
