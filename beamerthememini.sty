@@ -2,14 +2,7 @@
 % mini theme
 % ----------
 
-%% \newif\if@doCasual
-%% \@doCasualfalse
-%% \DeclareOption{casual}{\@doCasualtrue}
-%% \ProcessOptions
-
-% --------
 % packages
-% --------
 \usepackage[none]{hyphenat}
 \usepackage{etex}
 \usepackage[utf8]{inputenc}
@@ -27,57 +20,31 @@
 \usepackage{tikz}
 \usetikzlibrary{calc,arrows,shapes,shadows,positioning}
 
-%% \input{minicommon.tex}
-
 \renewcommand{\arraystretch}{1.5}
 \setbeamersize{text margin left=0.2cm}
 \setbeamersize{text margin right=0.2cm}
 
-% -----
+
 % fonts
-% -----
-
-%% \renewcommand\mathfamilydefault{\rmdefault}
-%% \renewcommand\familydefault{\rmdefault}
-%% \setbeamerfont{title}{family*={fouriernc}, size=\fontsize{30}{32}}
-%% \setbeamerfont{author}{family*={fouriernc}, size=\large}
-%% \setbeamerfont*{block title}{size*={10}{0}, family*={fouriernc}, series=\bfseries}
-%% \setbeamerfont{block body}{size*={8}{0}, family*={fouriernc}}
-%% \setbeamerfont{itemize/enumerate body}{size=\normalsize}
-%% \setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
-%% \setbeamerfont{itemize/enumerate subsubbody}{size=\small}
-
-%%\usepackage{fontspec}
 \usepackage[no-math]{fontspec}
-%%\usepackage{unicode-math}
 \usepackage[T1]{fontenc}
+\setsansfont{Roboto Light}
 
-%%\usepackage[default,oldstyle,scale=1]{opensans}
-\usepackage[sfdefault]{noto}
-\renewcommand\mathfamilydefault{\rmdefault}
-
-%% \setmainfont{TeX Gyre Heros}
-%% \setsansfont{TeX Gyre Heros} % ~ Helvetica
-%% \setmathrm{TeX Gyre Heros}
-%% \setmonofont{TeX Gyre Cursor}
+\usefonttheme[onlymath]{serif}
 
 \setbeamerfont{title}{size=\fontsize{32}{28}, series=\bfseries}
 \setbeamerfont{author}{size=\fontsize{10}{9}}
 \setbeamerfont{institute}{size=\normalsize}
 \setbeamerfont{date}{size=\normalsize}
 \setbeamerfont{subtitle}{size=\normalsize}
-
 \setbeamerfont{frametitle}{size=\Huge, series=\bfseries}
 \setbeamerfont{page number in head/foot}{size=\tiny}
-
 \setbeamerfont{itemize/enumerate body}{size=\normalsize}
 \setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
 \setbeamerfont{itemize/enumerate subsubbody}{size=\small}
-
 \setbeamerfont{section title}{size=\Large, series=\bfseries}
 \setbeamerfont{block title}{size=\normalsize, series=\bfseries}
 \setbeamerfont{block title alerted}{size=\normalsize, series=\bfseries}
-
 
 
 % -------
@@ -89,7 +56,8 @@
 \definecolor{mini-white}{HTML}{FFFFFF}
 %% \definecolor{mini-blue}{HTML}{4074E2}
 %% \definecolor{mini-blue}{HTML}{405AE2}
-\definecolor{mini-blue}{HTML}{1B6AB9}
+%\definecolor{mini-blue}{HTML}{1B43B9}
+\definecolor{mini-blue}{HTML}{183BA3}
 \definecolor{mini-orange}{HTML}{E34C3D}
 \definecolor{mini-grey}{HTML}{636565}
 
@@ -100,12 +68,16 @@
 %\definecolor{mini-pink}{HTML}{B91B5D}
 \definecolor{mini-green}{HTML}{6CC05A}
 
+
+\definecolor{mini-y}{HTML}{FFF275}
+\definecolor{mini-o}{HTML}{FF8C42}
+\definecolor{mini-p}{HTML}{FF3C38}
+\definecolor{mini-r}{HTML}{A23E48}
+\definecolor{mini-b}{HTML}{6286A7}
+
 %% \setbeamercolor{enumerate item}{fg=mini-blue}
 %% \setbeamercolor{alerted text}{fg=mini-blue}
 %% \setbeamercolor{section in toc}{fg=mini-black}
-
-%% %% \setbeamercolor{block title}{bg=MiniLightBlue,fg=MiniBlack}
-%% %% \setbeamercolor{block body}{bg=MiniLightBlue,fg=MiniBlack}
 
 %% %$ make the itemize bullets pixelated >
 %% \setbeamertemplate{itemize item}{
@@ -123,26 +95,31 @@
 %%     }
 %% }
 
-\setbeamercolor{title}{fg=mini-blue}
+\setbeamercolor{title}{fg=mini-b}
 \setbeamercolor{author}{fg=mini-black}
 
-\setbeamercolor{frametitle}{fg=mini-blue, bg=mini-white}
+\setbeamercolor{frametitle}{fg=mini-b, bg=mini-white}
 \setbeamercolor{footline}{fg=mini-black, bg=mini-white}
 
-\setbeamercolor{enumerate item}{fg=mini-blue}
+\setbeamercolor{enumerate item}{fg=mini-b}
 \setbeamercolor{section in toc}{fg=mini-black}
 \setbeamercolor{normal text}{fg=mini-black}
 
-\setbeamertemplate{itemize item}{\icircle{mini-blue}}
-\setbeamertemplate{itemize subitem}{\icircle{mini-grey}}
-\setbeamertemplate{itemize subsubitem}{\iemptycircle{mini-blue}}
+\setbeamertemplate{itemize item}{\icircle{mini-b}}
+\setbeamertemplate{itemize subitem}{\icircle{mini-r}}
+\setbeamertemplate{itemize subsubitem}{\iemptycircle{mini-b}}
 
 
 %
 % %
 
 \setlength\labelsep   {\dimexpr\labelsep - 0.4em\relax}
-\setlength\leftmargini{\dimexpr\leftmargini - 0.4em\relax}
+\setlength\leftmargini{\dimexpr\leftmargini - 0.5em\relax}
+\setlength\leftmarginii{\dimexpr\leftmarginii - 1.1em\relax}
+\setlength\leftmarginiii{\dimexpr\leftmarginiii - 1.1em\relax}
+
+%% \setlength{\leftmargini}{2pt}
+%% \setlength{\leftmarginii}{2pt}
 
 \setbeamertemplate{block begin}{%
   \vspace*{1ex}
@@ -274,7 +251,7 @@
 \setbeamertemplate{frametitle}{
   \nointerlineskip%
   \begin{beamercolorbox}[wd=\paperwidth, sep=4pt, leftskip=0.2cm, rightskip=0.2cm]{frametitle}%
-  \insertframetitle%
+    \insertframetitle%
   \end{beamercolorbox}%
   \vspace*{-0.1cm}%
 }
@@ -288,8 +265,7 @@
     \fill[color=mini-white] (0,0) rectangle(\the\paperwidth,\the\paperheight);
 
     \ifx\inserttitle\@empty\else%
-    \node[text centered, anchor=south west, text width=\slidewidth, inner sep=0, outer sep=0, font=\usebeamerfont{title}, color=mini-blue] at (0.0cm, 5.5cm) {\baselineskip=1.25cm\inserttitle\par};%
-    %\node[anchor=south west, text width=\slidewidth, inner sep=0, outer sep=0, font=\usebeamerfont{title}, color=mini-blue] at (0.5cm, 5.5cm) {\baselineskip=1.25cm\inserttitle\par};%
+    \node[text centered, anchor=south west, text width=\slidewidth, inner sep=0, outer sep=0, font=\usebeamerfont{title}, color=mini-b] at (0.0cm, 5.5cm) {\baselineskip=1.25cm\inserttitle\par};%
     \fi
     %% \ifx\insertsubtitle\@empty\else%
     %% %%\node[anchor=south west,color=mini-black,text width=\slidewidth-1cm,inner sep=0,outer sep=0,font=\usebeamerfont{subtitle}] at (0.5cm, 4cm) {\baselineskip=1.25cm\insertsubtitle\par};%
@@ -297,11 +273,9 @@
     %% \fi
     \ifx\author\@empty\else
     \node[text centered, anchor=south west, color=mini-black, font=\usebeamerfont{author},text width=\slidewidth] at (0.0cm,4.0cm) {\insertauthor};
-    %\node[anchor=south west, color=mini-black, font=\usebeamerfont{author},text width=\slidewidth] at (0.5cm,4.0cm) {\insertauthor};
     \fi
     \ifx\insertinstitute\@empty\else
     \node[text centered, anchor=south west, color=mini-black, font=\usebeamerfont{institute}, text width=\slidewidth] at (0.0cm,3.5cm) {\insertinstitute};
-    %\node[anchor=south west, color=mini-black, font=\usebeamerfont{institute}, text width=\slidewidth] at (0.5cm,3.5cm) {\insertinstitute};
     \fi
     \ifx\insertshortdate\@empty\else
     \node[anchor=south west,align=left,color=mini-black] at (0.5cm,1.0cm) {\insertshortdate};
@@ -321,20 +295,16 @@
 % Tikz bullets
 % -------------
 \newcommand{\icircle}[1]{
-  %% \tikz[baseline={(a.south)}]{
-  %%   %% \draw[draw=none,fill=#1] (0, 0) circle (0.05);
-  %%   \node[draw, circle, #1, fill=#1, inner sep=1pt, minimum size=0.9mm] (a) {};
-  %% }
   \tikz{
     \draw[draw=none] (0, 0.00) rectangle (0, 0.05);
-    \draw[#1,fill=#1] (0,0.11) circle (0.05);
+    \draw[#1,fill=#1] (0,0.11) circle (0.04);
     }
 }
 
 \newcommand{\iemptycircle}[1]{
   \tikz{
     \draw[draw=none] (0, 0.00) rectangle (0, 0.02);
-    \draw[draw=#1] (0, 0.11) circle (0.05);
+    \draw[draw=#1] (0, 0.11) circle (0.03);
     }
 }
 
@@ -354,9 +324,15 @@
   }
 }
 
-% -----------------
+\newcommand{\inarrow}[1]{
+  \tikz {
+    \draw[draw=none] (0, 0.00) rectangle (0, 0.10);
+    \draw[#1,->,line width=0.7] (0.28,0.10) -- (0.05,0.10);
+  }
+}
+
+
 %  Custom commands
-% -----------------
 \newcommand{\img}[2]{\includegraphics[width=#1\textwidth]{#2}}
 \newcommand{\overimg}[4]{\begin{overpic}[width=#1\textwidth]{#2} \put(#3){\tiny #4} \end{overpic}}
 
@@ -381,17 +357,20 @@
 
 \newcommand{\cemph}[1]{{\color{mini-orange}#1}}
 
-%% \newcommand{\beginbackup}{\begin{frame}\onlytitle{Backup}\end{frame}}
-%% \newcommand{\hr}{\begin{center} \line(1,0){350} \end{center}}
-%% \newcommand{\titlesp}{\vspace{1cm}}
-
-%% \newcommand{\llink}[2]{%
-%%   \href{#1}{{\color{mini-orange} \underline{#2}}}%
-%% }
-
 \newcommand{\llink}[2]{%
-  \href{#1}{{\color{mini-orange}\underline{#2}}}%
+  \href{#1}{{\color{mini-p}#2}}%
 }
+
+\newcommand{\llinks}[2]{%
+  \href{#1}{{\color{mini-p}\small#2}}%
+}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\im}{\item}
+\newcommand{\ig}{\includegraphics}
+\newcommand{\asterisk}{∗}
+\newcommand{\tmp}[1]{{\color{red}\textbf{\{#1\}}}}
 
 
 % -------------
@@ -409,13 +388,17 @@
 \newcommand{\backupbegin}{
   \newcounter{framenumberappendix}
   \setcounter{framenumberappendix}{\value{framenumber}}
-
-  \begin{frame}{}
-
-    {\fontsize{2cm}{1em}\selectfont \textsc{Backup}}
-
-  \end{frame}
+  {
+    \setbeamercolor{background canvas}{bg=mini-b,fg=mini-white}
+    \begin{frame}[c,plain]{}
+      \centering
+      %%\makebox[\linewidth]{\parbox{12cm}{
+      \noindent{\color{mini-white}\fontsize{86}{82}\selectfont Backup}\\[0.5cm]
+      \noindent{\color{mini-white}\fontsize{86}{82}\selectfont slides}
+    \end{frame}
+  }
 }
+
 \newcommand{\backupend}{
   \addtocounter{framenumberappendix}{-\value{framenumber}}
   \addtocounter{framenumber}{\value{framenumberappendix}}
@@ -430,8 +413,14 @@
   \end{minipage}%%
 }
 
-\newcommand{\bi}{\begin{itemize}}
-\newcommand{\ei}{\end{itemize}}
-\newcommand{\ig}{\includegraphics}
+\newcommand{\tlink}[5]{%
+ \begin{textblock*}{#1}(#2,#3)
+   \href{#4}{\tikz[baseline] \node[rectangle,thick,fill=spink,anchor=base,swhite]{\small #5};}%
+  \end{textblock*}
+}
 
-\newcommand{\asterisk}{∗}
+\newcommand{\tblock}[4]{%
+ \begin{textblock*}{#1}(#2,#3)
+   #4
+  \end{textblock*}
+}
